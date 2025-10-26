@@ -1,0 +1,44 @@
+
+
+
+teiHeader {
+    display: none;
+}
+
+
+
+text {
+    background-color: hwb(180 86% 5%);
+    display: block;
+}
+token {
+    background-color: azure;
+    display: inline;
+}
+
+eventGroups {
+    display: block;
+}
+eventGroup{
+    color:#000000;
+    background-color:#eddec6;
+    margin:10pt;
+    /*padding:0;*/
+    font-family:Verdana, Tahoma, Geneva, Arial, Helvetica, sans-serif;
+    display: block;
+}
+
+event {
+    display: block;
+}
+
+role[text] {
+    background-color: hsl(0, 31%, 85%);
+    display: inline;    
+}
+
+
+[text] {
+    background-color: hsl(0, 31%, 85%);
+    display: inline;    
+}
