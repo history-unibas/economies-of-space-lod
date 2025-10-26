@@ -304,11 +304,11 @@ limit 200;
 
 
 
--- test join with event group and role
+-- test join with event group, event and role
 
 select ev.ev_gr_id, ev.ev_gr_length, ev.event_id, evg.ev_gr_class, ev.year, 
 rol.role_role, rol.role_text,
-ev.event, evg.event_group, evg.entryid
+evg.event_group, evg.entryid
 from v_event_with_id ev, v_event_group_with_properties evg, v_role as rol
 where ev_gr_length > 2
 and ev.entryid = evg.entryid
@@ -325,7 +325,75 @@ limit 50;
 
 
 
+/*
+ * CREATE TABLE roles_with_events
+ * 
+ * When there are more data add a primary key and indexes on columns,
+ * 
+ * or test the performance of a temporary table
+ * 
+ */
+
+
+-- create table
+--drop table t_roles_with_events ;
+create table t_roles_with_events as
+select  row_number() OVER (ORDER BY 1)::INTEGER as pk_trwe,
+ev.ev_gr_id, ev.ev_gr_length, ev.event_id, evg.ev_gr_class, ev.year, 
+evg.event_group,
+rol.role_role, rol.role_text, rol.role_ref,
+evg.entryid
+from v_event_with_id ev, v_event_group_with_properties evg, v_role as rol
+where ev.entryid = evg.entryid
+and ev.ev_gr_id = evg.ev_gr_id
+and rol.entryid = evg.entryid
+and rol.event_id = ev.event_id
+and rol.ev_gr_id = ev.ev_gr_id;
 
 
 
+-- test t_roles_with_events
+
+select *
+from t_roles_with_events
+where ev_gr_length > 3
+order by entryid, ev_gr_id, event_id, role_ref
+limit 200;
+
+
+
+
+
+select role_role, count(*) as number
+from t_roles_with_events
+group by role_role
+order by number desc;
+
+
+select ev_gr_class, role_role, count(*) as number
+from t_roles_with_events
+group by ev_gr_class,role_role
+order by number desc;
+
+
+select ev_gr_class, count(*) as number
+from t_roles_with_events
+group by ev_gr_class
+order by number desc;
+
+
+
+with tw1 as (
+select ev_gr_class, role_role, count(*) as role_number
+from t_roles_with_events
+group by ev_gr_class,role_role),
+tw2 as (
+select ev_gr_class, count(*) as class_number
+from t_roles_with_events
+group by ev_gr_class)
+select tw2.ev_gr_class, tw2.class_number, 
+tw1.role_role, tw1.role_number
+from tw2, tw1
+where tw1.ev_gr_class = tw2.ev_gr_class
+order by class_number desc, role_number desc;
 
