@@ -306,7 +306,7 @@ limit 200;
 
 -- test join with event group, event and role
 
-select ev.ev_gr_id, ev.ev_gr_length, ev.event_id, evg.ev_gr_class, ev.year, 
+select ev.ev_gr_id, ev.ev_gr_length, ev.event_id, evg.dossierid, evg.ev_gr_class, ev.year, 
 rol.role_role, rol.role_text,
 evg.event_group, evg.entryid
 from v_event_with_id ev, v_event_group_with_properties evg, v_role as rol
@@ -339,7 +339,7 @@ limit 50;
 --drop table t_roles_with_events ;
 create table t_roles_with_events as
 select  row_number() OVER (ORDER BY 1)::INTEGER as pk_trwe,
-ev.ev_gr_id, ev.ev_gr_length, ev.event_id, evg.ev_gr_class, ev.year, 
+ev.ev_gr_id, ev.ev_gr_length, ev.event_id, evg.dossierid, evg.ev_gr_class, ev.year, 
 evg.event_group,
 rol.role_role, rol.role_text, rol.role_ref,
 evg.entryid

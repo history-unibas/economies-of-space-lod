@@ -1,25 +1,24 @@
 
 
 select count(*) as number
-from project_entry pe ;
-
-select *
 from project_entry pe 
-where pe.annotation is NULL
-limit 10;
+where pe.annotation is not null
+;
 
 select count(*) as number
 from project_entry pe 
-where pe.annotation is not NULL;
+where pe.annotation is null
+;
 
+
+-- inspect structure of table
 select *
 from project_entry pe 
-where pe.annotation is not NULL
-limit 10;
+where pe.annotation is not null
+order by dossierid, pageid 
+limit 30;
 
 
-select *
-from pg_available_extensions;
 
 
 

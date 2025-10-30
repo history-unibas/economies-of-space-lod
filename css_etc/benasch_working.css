@@ -1,5 +1,7 @@
 
-
+doc {
+    display: block;
+}
 
 teiHeader {
     display: none;
@@ -38,7 +40,39 @@ role[text] {
 }
 
 
-[text] {
+spans {
+    background-color: hwb(0 85% 8%);
+    display: block;
+}
+
+span {
+    display: block;
+    line-height: 150%;
+}
+
+span:after {
+    content: attr(text) " (" attr(class) ") [" attr(element) "]" ;
     background-color: hsl(0, 31%, 85%);
-    display: inline;    
+    display: block;
+}
+
+
+eventGroup[class]:before {
+    content: attr(class) " [" attr(type) "]";
+    visibility: visible;
+    background-color: hsl(35, 55%, 79%);
+}
+
+
+trigger[text]:before {
+    content:attr(text) ;
+    visibility: visible;
+    background-color: hsl(35, 18%, 80%);
+    display: block;
+}
+
+role:before {
+    content: attr(text) " (" attr(role) ")"  ;
+    background-color: hsl(0, 31%, 85%);
+    display: block;
 }
