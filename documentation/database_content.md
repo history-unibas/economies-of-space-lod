@@ -8,6 +8,7 @@ Back to [home](../README.md)
 See here some [examples of transcriptions](cards_examples.md)
 
 
+
 ## Database tables
 
 
