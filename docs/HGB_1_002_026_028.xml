@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<?xml-stylesheet type="text/css" href="../css_etc/benasch_working.css" ?>
+<?xml-stylesheet type="text/css" href="css_etc/benasch_working.css" ?>
 <doc xmlns="https://dhbern.github.io/BeNASch/ns">
   <tei:teiHeader xmlns:tei="http://www.tei-c.org/ns/1.0">
     <tei:fileDesc>
