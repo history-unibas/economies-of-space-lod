@@ -158,6 +158,56 @@ Peter Schorch der Schuemacher contra Friedrich Reinen , Spitthalkiefer , als Vog
 <tr class="odd"><td>1,637</td><td>3-0</td><td>litigation</td><td>party1</td><td>Peter Schorch der Schuemacher</td><td>691</td></tr>
 </table>
 
+
+
+
+### Combining events and spans
+
+#### Query
+
+
+
+    select tre.year, tre.event_id, tre.ev_gr_class, tre.role_role as role, tre.role_text, tre.role_ref,
+            ts.span_class, tre.event_id,
+            ts1.span_text as child_text, ts1.span_class child_class, ts1.parent_span_id 
+    from t_roles_with_events tre, 
+        t_spans ts,
+        t_spans ts1
+    where tre.dossierid = 'HGB_1_002_046'
+    and tre.role_ref = ts.span_id 
+    and ts.dossierid = 'HGB_1_002_046'
+    and ts1.parent_span_id = ts.span_id 
+    and ts1.dossierid = 'HGB_1_002_046'
+    order by tre.year, tre.event_id, tre.role_ref  ;
+
+
+#### Result
+
+
+<table><tr><th>year</th><th>event_id</th><th>ev_gr_class</th><th>role</th><th>role_text</th><th>role_ref</th><th>span_class</th><th>event_id</th><th>child_text</th><th>child_class</th></tr><tr class="odd"><td>1,637</td><td>0-0</td><td>representation</td><td>representative</td><td>Vogt Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>739</td><td>per</td><td>0-0</td><td>Vogt</td><td>repr</td></tr>
+<tr><td>1,637</td><td>0-0</td><td>representation</td><td>representative</td><td>Vogt Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>739</td><td>per</td><td>0-0</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>per</td></tr>
+<tr class="odd"><td>1,637</td><td>0-0</td><td>representation</td><td>represented</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td><td>per</td><td>0-0</td><td>Kinder</td><td>fam</td></tr>
+<tr><td>1,637</td><td>0-0</td><td>representation</td><td>represented</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td><td>per</td><td>0-0</td><td>in Eschemervorstatt</td><td>loc</td></tr>
+<tr class="odd"><td>1,637</td><td>0-0</td><td>representation</td><td>represented</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td><td>per</td><td>0-0</td><td>Jacob Schwartzen<br>des Küfers sel .</td><td>per</td></tr>
+<tr><td>1,637</td><td>1-0</td><td>family</td><td>family-b</td><td>Jacob Schwartzen<br>des Küfers sel .</td><td>757</td><td>per</td><td>1-0</td><td>des Küfers</td><td>occ</td></tr>
+<tr class="odd"><td>1,637</td><td>1-0</td><td>family</td><td>family-b</td><td>Jacob Schwartzen<br>des Küfers sel .</td><td>757</td><td>per</td><td>1-0</td><td>sel .</td><td>dead</td></tr>
+<tr><td>1,637</td><td>1-0</td><td>family</td><td>family-b</td><td>Jacob Schwartzen<br>des Küfers sel .</td><td>757</td><td>per</td><td>1-0</td><td>Jacob Schwartzen</td><td>nam</td></tr>
+<tr class="odd"><td>1,637</td><td>1-0</td><td>family</td><td>family-a</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td><td>per</td><td>1-0</td><td>in Eschemervorstatt</td><td>loc</td></tr>
+<tr><td>1,637</td><td>1-0</td><td>family</td><td>family-a</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td><td>per</td><td>1-0</td><td>Jacob Schwartzen<br>des Küfers sel .</td><td>per</td></tr>
+<tr class="odd"><td>1,637</td><td>1-0</td><td>family</td><td>family-a</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td><td>per</td><td>1-0</td><td>Kinder</td><td>fam</td></tr>
+<tr><td>1,637</td><td>2-0</td><td>topological</td><td>location-b</td><td>Eschemervorstatt</td><td>793</td><td>fac</td><td>2-0</td><td>Eschemervorstatt</td><td>nam</td></tr>
+<tr class="odd"><td>1,637</td><td>2-0</td><td>topological</td><td>location-a</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td><td>per</td><td>2-0</td><td>Kinder</td><td>fam</td></tr>
+<tr><td>1,637</td><td>2-0</td><td>topological</td><td>location-a</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td><td>per</td><td>2-0</td><td>Jacob Schwartzen<br>des Küfers sel .</td><td>per</td></tr>
+<tr class="odd"><td>1,637</td><td>2-0</td><td>topological</td><td>location-a</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td><td>per</td><td>2-0</td><td>in Eschemervorstatt</td><td>loc</td></tr>
+<tr><td>1,637</td><td>3-0</td><td>litigation</td><td>party1</td><td>Peter Schorch der Schuemacher</td><td>691</td><td>per</td><td>3-0</td><td>Peter Schorch</td><td>nam</td></tr>
+<tr class="odd"><td>1,637</td><td>3-0</td><td>litigation</td><td>party1</td><td>Peter Schorch der Schuemacher</td><td>691</td><td>per</td><td>3-0</td><td>der Schuemacher</td><td>occ</td></tr>
+<tr><td>1,637</td><td>3-0</td><td>litigation</td><td>party2</td><td>Friedrich<br>Reinen , Spitthalkiefer</td><td>721</td><td>per</td><td>3-0</td><td>Friedrich<br>Reinen</td><td>nam</td></tr>
+<tr class="odd"><td>1,637</td><td>3-0</td><td>litigation</td><td>party2</td><td>Friedrich<br>Reinen , Spitthalkiefer</td><td>721</td><td>per</td><td>3-0</td><td>Spitthalkiefer</td><td>occ</td></tr>
+<tr><td>1,637</td><td>3-0</td><td>litigation</td><td>subject</td><td>einem Känell , dadurch dem Kläger das Wasser<br>in seinen Privaten dringet wegen einem Camin</td><td>836</td><td>other</td><td>3-0</td><td>dem Kläger</td><td>per</td></tr>
+</table>
+
+
+
 <br/>
 
 
