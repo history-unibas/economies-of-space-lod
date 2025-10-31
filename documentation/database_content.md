@@ -1,4 +1,15 @@
 
+# Question about the database structure and content
+
+Back to [home](../README.md)
+
+## Cards examples
+
+See here some [examples of transcriptions](cards_examples.md)
+
+
+## Database tables
+
 
 ### StABS_Dossier
 
