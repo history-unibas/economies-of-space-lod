@@ -54,14 +54,20 @@ Peter Schorch der Schuemacher contra Friedrich Reinen , Spitthalkiefer , als Vog
         </span>
     </spans>
 
+-----
+
+#### Query on database
+
+    select *
+    FROM t_spans ts 
+    where ts.dossierid = 'HGB_1_002_046'
+    order by year, span_id;
 
 
 #### Result (only columns for demo)
 
-<style>
-table {border: medium solid #6495ed;border-collapse: collapse;width: 100%;} th{font-family: monospace;border: thin solid #6495ed;padding: 5px;background-color: #D0E3FA;}th{text-align: left;}td{font-family: sans-serif;border: thin solid #6495ed;padding: 5px;text-align: center;}.odd{background:#e8edff;}img{padding:5px; border:solid; border-color: #dddddd #aaaaaa #aaaaaa #dddddd; border-width: 1px 2px 2px 1px; background-color:white;}</style>
 
-<table><tr><th colspan="6"><pre><code>select *<br>FROM t_spans ts <br>where ts.dossierid = 'HGB_1_002_046'<br>order by year, span_id</code></pre></th></tr><tr><th>year</th><th>span_text</th><th>span_class</th><th>span_element</th><th>span_id</th><th>parent_span_id</th></tr><tr class="odd"><td>1,637</td><td>Peter Schorch der Schuemacher</td><td>per</td><td>reference</td><td>691</td><td>&nbsp;</td></tr>
+<table><tr><th>year</th><th>span_text</th><th>span_class</th><th>span_element</th><th>span_id</th><th>parent_span_id</th></tr><tr class="odd"><td>1,637</td><td>Peter Schorch der Schuemacher</td><td>per</td><td>reference</td><td>691</td><td>&nbsp;</td></tr>
 <tr><td>1,637</td><td>Peter Schorch</td><td>nam</td><td>head</td><td>697</td><td>691</td></tr>
 <tr class="odd"><td>1,637</td><td>der Schuemacher</td><td>occ</td><td>appo</td><td>703</td><td>691</td></tr>
 <tr><td>1,637</td><td>Schuemacher</td><td>occ</td><td>head</td><td>709</td><td>703</td></tr>
@@ -129,10 +135,19 @@ table {border: medium solid #6495ed;border-collapse: collapse;width: 100%;} th{f
 -----    
 
 
+#### Query on database
+
+    select year, event_id, ev_gr_class, role_role as role, role_text, role_ref  
+    from t_roles_with_events
+    where dossierid = 'HGB_1_002_046'
+    order by year, event_id ;
+
+
+
 #### Result (only columns for demo)
 
 <div>
-<table><tr><th colspan="6"><pre><code>select *<br>from t_roles_with_events<br>where dossierid = 'HGB_1_002_046'<br>order by year, event_id </code></pre></th></tr><tr><th>year</th><th>event_id</th><th>ev_gr_class</th><th>role</th><th>role_text</th><th>role_ref</th></tr><tr class="odd"><td>1,637</td><td>0-0</td><td>representation</td><td>represented</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td></tr>
+<table><tr class="odd"><td>1,637</td><td>0-0</td><td>representation</td><td>represented</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td></tr>
 <tr><td>1,637</td><td>0-0</td><td>representation</td><td>representative</td><td>Vogt Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>739</td></tr>
 <tr class="odd"><td>1,637</td><td>1-0</td><td>family</td><td>family-b</td><td>Jacob Schwartzen<br>des Küfers sel .</td><td>757</td></tr>
 <tr><td>1,637</td><td>1-0</td><td>family</td><td>family-a</td><td>Jacob Schwartzen<br>des Küfers sel . Kinder in Eschemervorstatt</td><td>818</td></tr>
