@@ -4,7 +4,8 @@
 
 ## General inspection of the database
 
-[Examples of archival documents and semantically annotated XML transcriptions](documentation/cards_examples.md)
+* [Examples of archival documents and semantically annotated XML transcriptions](documentation/cards_examples.md)
+* [Documents online for inspection](https://history-unibas.github.io/economies-of-space-lod/)
 
 In these files are documented corresponding SQL queries:
 
