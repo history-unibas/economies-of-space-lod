@@ -1,0 +1,575 @@
+<document id="106376">
+    <metadata id="106376" dossier="HGB_1_002_073" pages="10, 11" year="1687.0"
+        text="Notariats Urkunde.&#10;H. Hanns Bernhard Beckher, Mahler und Burger&#10;zu Basel, und Frau Maria Gürtlerin sein Eheweil ver¬&#10;kaufen an H. Johannes Ehinger, Burger und Gastgeb&#10;zum Hirtzen, und Frawen Catharina Schlossern,&#10;eine Behausung und Würthschaft zum Bären ge¬&#10;nannt, samt Stallung, dem Platz hinden neben der Schen¬&#10;ren und darhinder gelegenem Gärttlin, als solche in&#10;Basel in der Aschemer Vorstatt anseiths neben den Kau¬&#10;feren sellesten, anderseits neben Emanuel Vest dem&#10;Mezger gelegen, hinden mit dem Gartten auf Herren&#10;Jacob Bertsche den Buchtruckher stossend, gibt H. Lus&#10;Burckhardt der Rechten Dr. und Prof. 500 ℔. Cap., H. Nübling&#10;Oberschreiber d. Spitals 50 Gld und der Fraw Verkäufern&#10;selbsten 600 ℔. Capital, alles ablösig, welche Capitalien [sep] der Verkäufer abzuzahlen verspricht, umb 1700 ℔. Geltes&#10;sambt 16 Reichsthaleren Trinckgelt.&#10;1688. März 17. Die obigen Käufer cedieren diese&#10;Behausung der Frau Verkäufern Sohn voriger Ehe¬&#10;Rudolf Frangmesser, umb vorbedentes Kaufgelt der 1700 ℔.&#10;und 16 Kohsthl. an die Beladenschaft von 1163 ℔ u. 10 sh.&#10;abgeht." />
+    <text>
+        <token token_id="0">Notariats</token>
+        <token token_id="1">Urkunde</token>
+        <token token_id="2">.</token>
+        <token token_id="3">H</token>
+        <token token_id="4">.</token>
+        <token token_id="5">Hanns</token>
+        <token token_id="6">Bernhard</token>
+        <token token_id="7">Beckher</token>
+        <token token_id="8">,</token>
+        <token token_id="9">Mahler</token>
+        <token token_id="10">und</token>
+        <token token_id="11">Burger</token>
+        <token token_id="12">zu</token>
+        <token token_id="13">Basel</token>
+        <token token_id="14">,</token>
+        <token token_id="15">und</token>
+        <token token_id="16">Frau</token>
+        <token token_id="17">Maria</token>
+        <token token_id="18">Gürtlerin</token>
+        <token token_id="19">sein</token>
+        <token token_id="20">Eheweil</token>
+        <token token_id="21">ver</token>
+        <token token_id="22">¬</token>
+        <token token_id="23">kaufen</token>
+        <token token_id="24">an</token>
+        <token token_id="25">H</token>
+        <token token_id="26">.</token>
+        <token token_id="27">Johannes</token>
+        <token token_id="28">Ehinger</token>
+        <token token_id="29">,</token>
+        <token token_id="30">Burger</token>
+        <token token_id="31">und</token>
+        <token token_id="32">Gastgeb</token>
+        <token token_id="33">zum</token>
+        <token token_id="34">Hirtzen</token>
+        <token token_id="35">,</token>
+        <token token_id="36">und</token>
+        <token token_id="37">Frawen</token>
+        <token token_id="38">Catharina</token>
+        <token token_id="39">Schlossern</token>
+        <token token_id="40">,</token>
+        <token token_id="41">eine</token>
+        <token token_id="42">Behausung</token>
+        <token token_id="43">und</token>
+        <token token_id="44">Würthschaft</token>
+        <token token_id="45">zum</token>
+        <token token_id="46">Bären</token>
+        <token token_id="47">ge</token>
+        <token token_id="48">¬</token>
+        <token token_id="49">nannt</token>
+        <token token_id="50">,</token>
+        <token token_id="51">samt</token>
+        <token token_id="52">Stallung</token>
+        <token token_id="53">,</token>
+        <token token_id="54">dem</token>
+        <token token_id="55">Platz</token>
+        <token token_id="56">hinden</token>
+        <token token_id="57">neben</token>
+        <token token_id="58">der</token>
+        <token token_id="59">Schen</token>
+        <token token_id="60">¬</token>
+        <token token_id="61">ren</token>
+        <token token_id="62">und</token>
+        <token token_id="63">darhinder</token>
+        <token token_id="64">gelegenem</token>
+        <token token_id="65">Gärttlin</token>
+        <token token_id="66">,</token>
+        <token token_id="67">als</token>
+        <token token_id="68">solche</token>
+        <token token_id="69">in</token>
+        <token token_id="70">Basel</token>
+        <token token_id="71">in</token>
+        <token token_id="72">der</token>
+        <token token_id="73">Aschemer</token>
+        <token token_id="74">Vorstatt</token>
+        <token token_id="75">anseiths</token>
+        <token token_id="76">neben</token>
+        <token token_id="77">den</token>
+        <token token_id="78">Kau</token>
+        <token token_id="79">¬</token>
+        <token token_id="80">feren</token>
+        <token token_id="81">sellesten</token>
+        <token token_id="82">,</token>
+        <token token_id="83">anderseits</token>
+        <token token_id="84">neben</token>
+        <token token_id="85">Emanuel</token>
+        <token token_id="86">Vest</token>
+        <token token_id="87">dem</token>
+        <token token_id="88">Mezger</token>
+        <token token_id="89">gelegen</token>
+        <token token_id="90">,</token>
+        <token token_id="91">hinden</token>
+        <token token_id="92">mit</token>
+        <token token_id="93">dem</token>
+        <token token_id="94">Gartten</token>
+        <token token_id="95">auf</token>
+        <token token_id="96">Herren</token>
+        <token token_id="97">Jacob</token>
+        <token token_id="98">Bertsche</token>
+        <token token_id="99">den</token>
+        <token token_id="100">Buchtruckher</token>
+        <token token_id="101">stossend</token>
+        <token token_id="102">,</token>
+        <token token_id="103">gibt</token>
+        <token token_id="104">H</token>
+        <token token_id="105">.</token>
+        <token token_id="106">Lus</token>
+        <token token_id="107">Burckhardt</token>
+        <token token_id="108">der</token>
+        <token token_id="109">Rechten</token>
+        <token token_id="110">Dr</token>
+        <token token_id="111">.</token>
+        <token token_id="112">und</token>
+        <token token_id="113">Prof</token>
+        <token token_id="114">.</token>
+        <token token_id="115">500</token>
+        <token token_id="116">℔.</token>
+        <token token_id="117">Cap</token>
+        <token token_id="118">.,</token>
+        <token token_id="119">H</token>
+        <token token_id="120">.</token>
+        <token token_id="121">Nübling</token>
+        <token token_id="122">Oberschreiber</token>
+        <token token_id="123">d</token>
+        <token token_id="124">.</token>
+        <token token_id="125">Spitals</token>
+        <token token_id="126">50</token>
+        <token token_id="127">Gld</token>
+        <token token_id="128">und</token>
+        <token token_id="129">der</token>
+        <token token_id="130">Fraw</token>
+        <token token_id="131">Verkäufern</token>
+        <token token_id="132">selbsten</token>
+        <token token_id="133">600</token>
+        <token token_id="134">℔.</token>
+        <token token_id="135">Capital</token>
+        <token token_id="136">,</token>
+        <token token_id="137">alles</token>
+        <token token_id="138">ablösig</token>
+        <token token_id="139">,</token>
+        <token token_id="140">welche</token>
+        <token token_id="141">Capitalien</token>
+        <token token_id="142">[</token>
+        <token token_id="143">sep</token>
+        <token token_id="144">]</token>
+        <token token_id="145">der</token>
+        <token token_id="146">Verkäufer</token>
+        <token token_id="147">abzuzahlen</token>
+        <token token_id="148">verspricht</token>
+        <token token_id="149">,</token>
+        <token token_id="150">umb</token>
+        <token token_id="151">1700</token>
+        <token token_id="152">℔.</token>
+        <token token_id="153">Geltes</token>
+        <token token_id="154">sambt</token>
+        <token token_id="155">16</token>
+        <token token_id="156">Reichsthaleren</token>
+        <token token_id="157">Trinckgelt</token>
+        <token token_id="158">.</token>
+        <token token_id="159">1688</token>
+        <token token_id="160">.</token>
+        <token token_id="161">März</token>
+        <token token_id="162">17</token>
+        <token token_id="163">.</token>
+        <token token_id="164">Die</token>
+        <token token_id="165">obigen</token>
+        <token token_id="166">Käufer</token>
+        <token token_id="167">cedieren</token>
+        <token token_id="168">diese</token>
+        <token token_id="169">Behausung</token>
+        <token token_id="170">der</token>
+        <token token_id="171">Frau</token>
+        <token token_id="172">Verkäufern</token>
+        <token token_id="173">Sohn</token>
+        <token token_id="174">voriger</token>
+        <token token_id="175">Ehe</token>
+        <token token_id="176">¬</token>
+        <token token_id="177">Rudolf</token>
+        <token token_id="178">Frangmesser</token>
+        <token token_id="179">,</token>
+        <token token_id="180">umb</token>
+        <token token_id="181">vorbedentes</token>
+        <token token_id="182">Kaufgelt</token>
+        <token token_id="183">der</token>
+        <token token_id="184">1700</token>
+        <token token_id="185">℔.</token>
+        <token token_id="186">und</token>
+        <token token_id="187">16</token>
+        <token token_id="188">Kohsthl</token>
+        <token token_id="189">.</token>
+        <token token_id="190">an</token>
+        <token token_id="191">die</token>
+        <token token_id="192">Beladenschaft</token>
+        <token token_id="193">von</token>
+        <token token_id="194">1163</token>
+        <token token_id="195">℔</token>
+        <token token_id="196">u</token>
+        <token token_id="197">.</token>
+        <token token_id="198">10</token>
+        <token token_id="199">sh</token>
+        <token token_id="200">.</token>
+        <token token_id="201">abgeht</token>
+        <token token_id="202">.</token>
+    </text>
+    <spans>
+        <span id="0" start="3" end="13" confidence="0.9428433830087836"
+            text="H . Hanns Bernhard Beckher , Mahler und Burger zu Basel" element="reference"
+            class="per">
+            <span id="22" start="5" end="7" confidence="0.9999294479688009"
+                text="Hanns Bernhard Beckher" element="head" class="nam" />
+            <span id="23" start="9" end="9" confidence="0.998552143573761" text="Mahler"
+                element="appo" class="per">
+                <span id="25" start="9" end="9" confidence="0.9999997615814209" text="Mahler"
+                    element="head" class="occ" norm="maler" />
+            </span>
+            <span id="24" start="11" end="13" confidence="0.9728150963783264" text="Burger zu Basel"
+                element="appo" class="per">
+                <span id="26" start="11" end="11" confidence="1.0" text="Burger" element="head"
+                    class="org-aff" />
+                <span id="27" start="13" end="13" confidence="0.9999634027481079" text="Basel"
+                    element="reference" class="gpe">
+                    <span id="28" start="13" end="13" confidence="0.9999974966049194" text="Basel"
+                        element="head" class="nam" />
+                </span>
+            </span>
+        </span>
+        <span id="1" start="16" end="20" confidence="0.9960647821426392"
+            text="Frau Maria Gürtlerin sein Eheweil" element="reference" class="per">
+            <span id="29" start="17" end="18" confidence="0.9999997019767761" text="Maria Gürtlerin"
+                element="head" class="nam" />
+            <span id="30" start="19" end="20" confidence="0.9997331202030182" text="sein Eheweil"
+                element="appo" class="per">
+                <span id="32" start="20" end="20" confidence="0.9999866485595703" text="Eheweil"
+                    element="head" class="fam" />
+                <span id="31" start="19" end="19" confidence="0.9996843338012695" text="sein"
+                    element="reference" class="per">
+                    <span id="33" start="19" end="19" confidence="0.9999991655349731" text="sein"
+                        element="head" class="nam" />
+                </span>
+            </span>
+        </span>
+        <span id="2" start="21" end="23" confidence="0.944048007329305" text="ver ¬ kaufen"
+            element="trigger" class="transaction" />
+        <span id="3" start="25" end="34" confidence="0.9952070474624634"
+            text="H . Johannes Ehinger , Burger und Gastgeb zum Hirtzen" element="reference"
+            class="per">
+            <span id="34" start="27" end="28" confidence="0.9999960660934448"
+                text="Johannes Ehinger" element="head" class="nam" />
+            <span id="35" start="30" end="30" confidence="0.983726978302002" text="Burger"
+                element="appo" class="per">
+                <span id="37" start="30" end="30" confidence="1.0" text="Burger" element="head"
+                    class="org-aff" />
+            </span>
+            <span id="36" start="32" end="34" confidence="0.9118468364079794"
+                text="Gastgeb zum Hirtzen" element="appo" class="per">
+                <span id="38" start="32" end="32" confidence="0.9999986886978149" text="Gastgeb"
+                    element="head" class="org-job" norm="gastgeber" />
+                <span id="39" start="33" end="34" confidence="0.9987998604774475" text="zum Hirtzen"
+                    element="reference" class="org">
+                    <span id="40" start="33" end="34" confidence="0.9899914264678955"
+                        text="zum Hirtzen" element="head" class="nam" norm="Zum Hirtzen"
+                        norm_confidence="1.0" />
+                </span>
+            </span>
+        </span>
+        <span id="4" start="37" end="39" confidence="0.9922487735748291"
+            text="Frawen Catharina Schlossern" element="reference" class="per">
+            <span id="41" start="38" end="39" confidence="0.9999994039535522"
+                text="Catharina Schlossern" element="head" class="nam" />
+        </span>
+        <span id="5" start="41" end="144" confidence="0.9357734230848459"
+            text="eine Behausung und Würthschaft zum Bären ge ¬ nannt , samt Stallung , dem Platz hinden neben der Schen ¬ ren und darhinder gelegenem Gärttlin , als solche in Basel in der Aschemer Vorstatt anseiths neben den Kau ¬ feren sellesten , anderseits neben Emanuel Vest dem Mezger gelegen , hinden mit dem Gartten auf Herren Jacob Bertsche den Buchtruckher stossend , gibt H . Lus Burckhardt der Rechten Dr . und Prof . 500 ℔. Cap ., H . Nübling Oberschreiber d . Spitals 50 Gld und der Fraw Verkäufern selbsten 600 ℔. Capital , alles ablösig , welche Capitalien [ sep ]"
+            element="reference" class="loc">
+            <span id="42" start="42" end="44" confidence="0.9991449515024821"
+                text="Behausung und Würthschaft" element="head" class="type" />
+            <span id="43" start="45" end="46" confidence="0.953405886888504" text="zum Bären"
+                element="appo" class="loc">
+                <span id="50" start="45" end="46" confidence="0.9958736896514893" text="zum Bären"
+                    element="head" class="alias" />
+            </span>
+            <span id="44" start="51" end="65" confidence="0.7401909073193867"
+                text="samt Stallung , dem Platz hinden neben der Schen ¬ ren und darhinder gelegenem Gärttlin"
+                element="attr" class="comp">
+                <span id="51" start="52" end="52" confidence="0.9937519431114197" text="Stallung"
+                    element="reference" class="loc">
+                    <span id="54" start="52" end="52" confidence="0.9999995231628418"
+                        text="Stallung" element="head" class="type" />
+                </span>
+                <span id="52" start="54" end="55" confidence="0.873916745185852" text="dem Platz"
+                    element="reference" class="loc">
+                    <span id="55" start="55" end="55" confidence="0.9998002648353577" text="Platz"
+                        element="head" class="type" />
+                </span>
+                <span id="53" start="58" end="65" confidence="0.9219821318984032"
+                    text="der Schen ¬ ren und darhinder gelegenem Gärttlin" element="reference"
+                    class="loc">
+                    <span id="56" start="59" end="61" confidence="0.9994909167289734"
+                        text="Schen ¬ ren" element="head" class="type" />
+                    <span id="57" start="63" end="65" confidence="0.7678133646647135"
+                        text="darhinder gelegenem Gärttlin" element="attr" class="loc">
+                        <span id="58" start="64" end="65" confidence="0.9046685695648193"
+                            text="gelegenem Gärttlin" element="reference" class="loc">
+                            <span id="59" start="65" end="65" confidence="0.9958232641220093"
+                                text="Gärttlin" element="head" class="type" />
+                        </span>
+                    </span>
+                </span>
+            </span>
+            <span id="45" start="67" end="101" confidence="0.9414381231580462"
+                text="als solche in Basel in der Aschemer Vorstatt anseiths neben den Kau ¬ feren sellesten , anderseits neben Emanuel Vest dem Mezger gelegen , hinden mit dem Gartten auf Herren Jacob Bertsche den Buchtruckher stossend"
+                element="attr" class="loc">
+                <span id="60" start="70" end="70" confidence="0.9673370718955994" text="Basel"
+                    element="reference" class="gpe">
+                    <span id="66" start="70" end="70" confidence="0.9999974966049194" text="Basel"
+                        element="head" class="nam" />
+                </span>
+                <span id="61" start="72" end="74" confidence="0.9453094800313314"
+                    text="der Aschemer Vorstatt" element="reference" class="loc">
+                    <span id="67" start="73" end="74" confidence="0.9397194087505341"
+                        text="Aschemer Vorstatt" element="head" class="type" />
+                </span>
+                <span id="62" start="77" end="81" confidence="0.7025743782520294"
+                    text="den Kau ¬ feren sellesten" element="reference" class="loc">
+                    <span id="68" start="78" end="81" confidence="0.9873687922954559"
+                        text="Kau ¬ feren sellesten" element="head" class="type" />
+                </span>
+                <span id="63" start="85" end="88" confidence="0.9879639446735382"
+                    text="Emanuel Vest dem Mezger" element="reference" class="per">
+                    <span id="69" start="85" end="86" confidence="0.9999790787696838"
+                        text="Emanuel Vest" element="head" class="nam" />
+                    <span id="70" start="87" end="88" confidence="0.9998161196708679"
+                        text="dem Mezger" element="appo" class="per">
+                        <span id="71" start="88" end="88" confidence="0.9999186992645264"
+                            text="Mezger" element="head" class="occ" norm="metzger" />
+                    </span>
+                </span>
+                <span id="64" start="93" end="94" confidence="0.9545064866542816" text="dem Gartten"
+                    element="reference" class="loc">
+                    <span id="72" start="94" end="94" confidence="0.9998236298561096" text="Gartten"
+                        element="head" class="type" />
+                </span>
+                <span id="65" start="96" end="100" confidence="0.9905498623847961"
+                    text="Herren Jacob Bertsche den Buchtruckher" element="reference" class="per">
+                    <span id="73" start="97" end="98" confidence="0.999998152256012"
+                        text="Jacob Bertsche" element="head" class="nam" />
+                    <span id="74" start="99" end="100" confidence="0.9999508857727051"
+                        text="den Buchtruckher" element="appo" class="per">
+                        <span id="75" start="100" end="100" confidence="0.9999992847442627"
+                            text="Buchtruckher" element="head" class="occ" norm="buchdrucker" />
+                    </span>
+                </span>
+            </span>
+            <span id="46" start="104" end="113" confidence="0.901281327009201"
+                text="H . Lus Burckhardt der Rechten Dr . und Prof" element="reference" class="per">
+                <span id="76" start="106" end="107" confidence="0.9998467266559601"
+                    text="Lus Burckhardt" element="head" class="nam" />
+                <span id="77" start="108" end="109" confidence="0.8518136143684387"
+                    text="der Rechten" element="appo" class="per">
+                    <span id="79" start="108" end="109" confidence="0.9851810038089752"
+                        text="der Rechten" element="head" class="title" />
+                </span>
+                <span id="78" start="110" end="113" confidence="0.6946157068014145"
+                    text="Dr . und Prof" element="appo" class="per">
+                    <span id="80" start="110" end="113" confidence="0.9915468245744705"
+                        text="Dr . und Prof" element="head" class="org-job" norm="unk" />
+                </span>
+            </span>
+            <span id="47" start="115" end="116" confidence="0.9976519644260406" text="500 ℔."
+                element="value" class="money" />
+            <span id="48" start="119" end="125" confidence="0.7389270876135144"
+                text="H . Nübling Oberschreiber d . Spitals" element="reference" class="per">
+                <span id="81" start="121" end="121" confidence="0.9952288866043091" text="Nübling"
+                    element="head" class="nam" />
+                <span id="82" start="122" end="125" confidence="0.9588974863290787"
+                    text="Oberschreiber d . Spitals" element="appo" class="per">
+                    <span id="83" start="122" end="122" confidence="0.9999967813491821"
+                        text="Oberschreiber" element="head" class="org-job" norm="oberschreiber" />
+                    <span id="84" start="123" end="125" confidence="0.9113413691520691"
+                        text="d . Spitals" element="reference" class="org">
+                        <span id="85" start="125" end="125" confidence="0.996161937713623"
+                            text="Spitals" element="head" class="nam" norm="Heiliggeist-Spital"
+                            norm_confidence="1.0" />
+                    </span>
+                </span>
+            </span>
+            <span id="49" start="126" end="144" confidence="0.915568819171504"
+                text="50 Gld und der Fraw Verkäufern selbsten 600 ℔. Capital , alles ablösig , welche Capitalien [ sep ]"
+                element="attr" class="tax">
+                <span id="86" start="126" end="127" confidence="0.9970330595970154" text="50 Gld"
+                    element="value" class="money" />
+                <span id="87" start="128" end="128" confidence="-1" text="und" element="trigger"
+                    class="due" />
+                <span id="88" start="129" end="131" confidence="0.5820497075716654"
+                    text="der Fraw Verkäufern" element="reference" class="per">
+                    <span id="90" start="131" end="131" confidence="0.9559274911880493"
+                        text="Verkäufern" element="head" class="role" />
+                </span>
+                <span id="89" start="133" end="134" confidence="0.9999792575836182" text="600 ℔."
+                    element="value" class="money" />
+            </span>
+        </span>
+        <span id="6" start="145" end="146" confidence="0.8482402563095093" text="der Verkäufer"
+            element="reference" class="per">
+            <span id="91" start="146" end="146" confidence="0.9999964237213135" text="Verkäufer"
+                element="head" class="role" />
+        </span>
+        <span id="7" start="147" end="147" confidence="0.566719651222229" text="abzuzahlen"
+            element="trigger" class="due" />
+        <span id="8" start="148" end="148" confidence="0.300264835357666" text="verspricht"
+            element="trigger" class="redemption" />
+        <span id="9" start="151" end="152" confidence="0.999729722738266" text="1700 ℔."
+            element="value" class="money" />
+        <span id="10" start="155" end="157" confidence="0.7809344132741293"
+            text="16 Reichsthaleren Trinckgelt" element="value" class="money" />
+        <span id="11" start="159" end="163" confidence="0.9812256932258606" text="1688 . März 17 ."
+            element="value" class="date" />
+        <span id="12" start="164" end="166" confidence="0.8236178557078043" text="Die obigen Käufer"
+            element="reference" class="per">
+            <span id="92" start="166" end="166" confidence="0.9999988079071045" text="Käufer"
+                element="head" class="role" />
+        </span>
+        <span id="13" start="167" end="167" confidence="0.921186089515686" text="cedieren"
+            element="trigger" class="declaration" />
+        <span id="14" start="168" end="169" confidence="0.714351624250412" text="diese Behausung"
+            element="reference" class="loc">
+            <span id="93" start="169" end="169" confidence="0.9999309778213501" text="Behausung"
+                element="head" class="type" />
+        </span>
+        <span id="15" start="170" end="176" confidence="0.9432462283543178"
+            text="der Frau Verkäufern Sohn voriger Ehe ¬" element="reference" class="per">
+            <span id="95" start="173" end="173" confidence="0.6482493281364441" text="Sohn"
+                element="head" class="fam" />
+            <span id="96" start="175" end="176" confidence="0.9504323899745941" text="Ehe ¬"
+                element="head" class="nam" />
+            <span id="94" start="170" end="172" confidence="0.7913512786229452"
+                text="der Frau Verkäufern" element="appo" class="per">
+                <span id="97" start="172" end="172" confidence="0.9923930168151855"
+                    text="Verkäufern" element="head" class="fam" />
+            </span>
+        </span>
+        <span id="16" start="177" end="178" confidence="0.940551370382309" text="Rudolf Frangmesser"
+            element="reference" class="per">
+            <span id="98" start="177" end="178" confidence="0.9999923706054688"
+                text="Rudolf Frangmesser" element="head" class="nam" />
+        </span>
+        <span id="17" start="184" end="185" confidence="0.989639550447464" text="1700 ℔."
+            element="value" class="money" />
+        <span id="18" start="187" end="189" confidence="0.9814643859863281" text="16 Kohsthl ."
+            element="value" class="money" />
+        <span id="19" start="194" end="195" confidence="0.9991820752620697" text="1163 ℔"
+            element="value" class="money" />
+        <span id="20" start="198" end="200" confidence="0.9383858839670817" text="10 sh ."
+            element="value" class="money" />
+        <span id="21" start="201" end="201" confidence="0.1909428834915161" text="abgeht"
+            element="trigger" class="payment" />
+    </spans>
+    <relations />
+    <eventGroups>
+        <eventGroup event_id="0" ref="" class="due-obligation" start="128" end="128" type="state">
+            <trigger start="128" end="128" text="und" confidence="0.9999886751174927" ref="87" />
+            <event event_id="0.0">
+                <role ref="86" text="50 Gld" role="capital" confidence="0.9988279938697815" />
+                <role ref="88" text="der Fraw Verkäufern" role="beneficiary"
+                    confidence="0.9999996423721313" />
+                <role ref="89" text="600 ℔." role="capital" confidence="0.9999514818191528" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="1" ref="" class="property-purchase" start="21" end="201" type="event">
+            <trigger start="21" end="23" text="ver ¬ kaufen" confidence="0.990035355091095" ref="2" />
+            <event event_id="1.0">
+                <role ref="0" text="H . Hanns Bernhard Beckher , Mahler und Burger zu Basel"
+                    role="seller" confidence="0.9923916459083557" />
+                <role ref="1" text="Frau Maria Gürtlerin sein Eheweil" role="seller"
+                    confidence="0.9976288676261902" />
+                <role ref="3" text="H . Johannes Ehinger , Burger und Gastgeb zum Hirtzen"
+                    role="buyer" confidence="0.9998345375061035" />
+                <role ref="4" text="Frawen Catharina Schlossern" role="buyer"
+                    confidence="0.9987442493438721" />
+                <role ref="5"
+                    text="eine Behausung und Würthschaft zum Bären ge ¬ nannt , samt Stallung , dem Platz hinden neben der Schen ¬ ren und darhinder gelegenem Gärttlin , als solche in Basel in der Aschemer Vorstatt anseiths neben den Kau ¬ feren sellesten , anderseits neben Emanuel Vest dem Mezger gelegen , hinden mit dem Gartten auf Herren Jacob Bertsche den Buchtruckher stossend , gibt H . Lus Burckhardt der Rechten Dr . und Prof . 500 ℔. Cap ., H . Nübling Oberschreiber d . Spitals 50 Gld und der Fraw Verkäufern selbsten 600 ℔. Capital , alles ablösig , welche Capitalien [ sep ]"
+                    role="property" confidence="0.9987238049507141" />
+                <role ref="9" text="1700 ℔." role="price" confidence="0.7235002517700195" />
+                <role ref="11" text="1688 . März 17 ." role="date" confidence="0.8110967874526978" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="2" ref="" class="due-obligation" start="147" end="147" type="state">
+            <trigger start="147" end="147" text="abzuzahlen" confidence="0.999762237071991" ref="7" />
+            <event event_id="2.0">
+                <role ref="6" text="der Verkäufer" role="payer" confidence="0.6334711313247681" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="3" ref="" class="redemption" start="148" end="148" type="event">
+            <trigger start="148" end="148" text="verspricht" confidence="0.6749273538589478" ref="8" />
+            <event event_id="3.0" />
+        </eventGroup>
+        <eventGroup event_id="4" ref="" class="declaration" start="51" end="201" type="event">
+            <trigger start="167" end="167" text="cedieren" confidence="0.6133495569229126" ref="13" />
+            <event event_id="4.0">
+                <role ref="11" text="1688 . März 17 ." role="date" confidence="0.6754876375198364" />
+                <role ref="12" text="Die obigen Käufer" role="seller"
+                    confidence="0.24563053250312805" />
+                <role ref="14" text="diese Behausung" role="property"
+                    confidence="0.9188675880432129" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="5" ref="" class="payment" start="201" end="201" type="event">
+            <trigger start="201" end="201" text="abgeht" confidence="0.7738328576087952" ref="21" />
+            <event event_id="5.0">
+                <role ref="17" text="1700 ℔." role="sum" confidence="0.7650741934776306" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="7" class="org-aff" start="11" end="128" ref="24">
+            <trigger start="11" end="11" text="Burger" ref="26" />
+            <event event_id="7.0">
+                <role role="source" ref="0"
+                    text="H . Hanns Bernhard Beckher , Mahler und Burger zu Basel" />
+                <role role="target" ref="27" text="Basel" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="8" class="family" start="19" end="201" ref="30" type="state">
+            <trigger start="20" end="20" text="Eheweil" ref="32" />
+            <event event_id="8.0">
+                <role role="family-a" ref="1" text="Frau Maria Gürtlerin sein Eheweil" />
+                <role role="family-b" ref="31" text="sein" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="9" class="employment" start="32" end="148" ref="36" type="state">
+            <trigger start="32" end="32" text="Gastgeb" ref="38" />
+            <event event_id="9.0">
+                <role role="employee" ref="3"
+                    text="H . Johannes Ehinger , Burger und Gastgeb zum Hirtzen" />
+                <role role="employer" ref="39" text="zum Hirtzen" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="10" class="employment" start="122" end="125" ref="82" type="state">
+            <trigger start="122" end="122" text="Oberschreiber" ref="83" />
+            <event event_id="10.0">
+                <role role="employee" ref="48" text="H . Nübling Oberschreiber d . Spitals" />
+                <role role="employer" ref="84" text="d . Spitals" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="11" class="part_whole" start="51" end="201" ref="44" type="state">
+            <event event_id="11.0">
+                <role role="whole" ref="5"
+                    text="eine Behausung und Würthschaft zum Bären ge ¬ nannt , samt Stallung , dem Platz hinden neben der Schen ¬ ren und darhinder gelegenem Gärttlin , als solche in Basel in der Aschemer Vorstatt anseiths neben den Kau ¬ feren sellesten , anderseits neben Emanuel Vest dem Mezger gelegen , hinden mit dem Gartten auf Herren Jacob Bertsche den Buchtruckher stossend , gibt H . Lus Burckhardt der Rechten Dr . und Prof . 500 ℔. Cap ., H . Nübling Oberschreiber d . Spitals 50 Gld und der Fraw Verkäufern selbsten 600 ℔. Capital , alles ablösig , welche Capitalien [ sep ]" />
+                <role role="part" ref="51" text="Stallung" />
+                <role role="part" ref="52" text="dem Platz" />
+                <role role="part" ref="53" text="der Schen ¬ ren und darhinder gelegenem Gärttlin" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="12" class="topological" start="63" end="65" ref="57" type="state">
+            <event event_id="12.0">
+                <role role="location-a" ref="53"
+                    text="der Schen ¬ ren und darhinder gelegenem Gärttlin" />
+                <role role="location-b" ref="58" text="gelegenem Gärttlin" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="13" class="topological" start="67" end="201" ref="45" type="state">
+            <event event_id="13.0">
+                <role role="location-a" ref="5"
+                    text="eine Behausung und Würthschaft zum Bären ge ¬ nannt , samt Stallung , dem Platz hinden neben der Schen ¬ ren und darhinder gelegenem Gärttlin , als solche in Basel in der Aschemer Vorstatt anseiths neben den Kau ¬ feren sellesten , anderseits neben Emanuel Vest dem Mezger gelegen , hinden mit dem Gartten auf Herren Jacob Bertsche den Buchtruckher stossend , gibt H . Lus Burckhardt der Rechten Dr . und Prof . 500 ℔. Cap ., H . Nübling Oberschreiber d . Spitals 50 Gld und der Fraw Verkäufern selbsten 600 ℔. Capital , alles ablösig , welche Capitalien [ sep ]" />
+                <role role="location-b" ref="60" text="Basel" />
+                <role role="location-b" ref="61" text="der Aschemer Vorstatt" />
+                <role role="location-b" ref="62" text="den Kau ¬ feren sellesten" />
+                <role role="location-b" ref="63" text="Emanuel Vest dem Mezger" />
+                <role role="location-b" ref="64" text="dem Gartten" />
+                <role role="location-b" ref="65" text="Herren Jacob Bertsche den Buchtruckher" />
+            </event>
+        </eventGroup>
+    </eventGroups>
+</document>

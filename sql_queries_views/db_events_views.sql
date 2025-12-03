@@ -1,13 +1,18 @@
 
+/*
+ * 
+ * New column 'annotation_manual' without array, just XML value
+ *  
+ */
 
 -- event groups XML
 
 select unnest(xpath('//myns:eventGroup', 
-pe.annotation[1], (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as event_group,
+pe.annotation_manual, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
 where pe.dossierid = 'HGB_1_002_026' 
-AND pe.annotation is not null;
+AND pe.annotation_manual is not null;
 
 
 /*
@@ -19,11 +24,11 @@ AND pe.annotation is not null;
 
 with tw1 as (
 select unnest(xpath('//myns:eventGroup', 
-pe.annotation[1], (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as event_group,
+pe.annotation_manual, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
-where pe.annotation is not null
---and pe.dossierid = 'HGB_1_002_026'
+where pe.annotation_manual is not null
+and pe.dossierid = 'HGB_1_002_026'
 )
 select 
 	(xpath('//myns:eventGroup/@event_id', 

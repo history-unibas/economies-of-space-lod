@@ -1,31 +1,74 @@
+/*
+ * This documents provides queries analysing 
+ * basic features of the database
+ */
 
-
+-- documents where the annotated text is available
 select count(*) as number
 from project_entry pe 
-where pe.annotation is not null
+where pe.annotation_automated is not null
 ;
 
+-- documents without text
 select count(*) as number
 from project_entry pe 
-where pe.annotation is null
+where pe.annotation_automated is null
 ;
 
 
--- inspect structure of table
+-- inspect structure of table as is
 select *
 from project_entry pe 
-where pe.annotation is not null
+where pe.annotation_automated is not null
 order by dossierid, pageid 
 limit 30;
 
-
-select sd.dossierid, sd.serieid, sd.stabsid, sd.title, sd.housename, sd.oldhousenumber , sd.owner1862, sd.descriptivenote ,
-pe."year" , pe."source" , pe."language", pe.pageid,
-pd."location" , pd.locationorigin, pd.locationaccuracy 
+-- associate metadata (address, etc.)
+select sd.dossierid, sd.serieid, sd.stabsid, sd.title, 
+	sd.housename, sd.oldhousenumber , sd.owner1862, sd.descriptivenote ,
+	pe."year" , pe."source" , pe."language", pe.pageid,
+	pd."location" , pd.locationorigin, pd.locationaccuracy 
 from project_entry pe, stabs_dossier sd , project_dossier pd 
-where pe.annotation is not null
+where pe.annotation_automated is not null
 and sd.dossierid = pe.dossierid 
 and pd.dossierid = sd.dossierid 
 order by sd.dossierid
 limit 30;
 
+/*
+ * Distribution dans les temps
+ * 
+ */
+
+-- min, max years
+select min(pe."year" ), max(pe."year" )
+from project_entry pe 
+where pe.annotation_automated is not null;
+
+
+WITH RECURSIVE periods AS (
+    SELECT 1300 AS year_b, 1351 as year_e
+    UNION ALL
+    SELECT year_b + 50, year_e + 50
+    FROM periods
+    WHERE year_b < 1750
+)
+SELECT * FROM periods;
+
+
+-- Distribution of documents by periods
+WITH RECURSIVE periods AS (
+    SELECT 1300 AS year_b, 1351 as year_e
+    UNION ALL
+    SELECT year_b + 50, year_e + 50
+    FROM periods
+    WHERE year_b < 1750
+), years_with_periods AS(
+select pe."year", CONCAT(ps.year_b, '_', ps.year_e ) as period
+from project_entry pe, periods ps
+where pe.annotation_automated is not null
+and pe."year" > ps.year_b and pe."year" < ps.year_e)
+select period, count(*) as number
+from years_with_periods 
+group by "period" 
+order by period;

@@ -1,6 +1,6 @@
 
 
-select year, annotation, pe.dossierid
+select year, pe.annotation_automated, pe.dossierid
 from project_entry pe
 limit 10;
 

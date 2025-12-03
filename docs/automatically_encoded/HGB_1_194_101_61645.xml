@@ -1,0 +1,122 @@
+<document id="61645">
+    <metadata id="61645" dossier="HGB_1_194_101" pages="10" year="1439.0"
+        text="Do machten einander ir varend gut Mr. Haus&#10;Thullenden der bartscherer u. Elsin sin ewirtin,&#10;darnach widmet si im iren dritten seil in dem Hus&#10;zem Steinenkelt," />
+    <text>
+        <token token_id="0">Do</token>
+        <token token_id="1">machten</token>
+        <token token_id="2">einander</token>
+        <token token_id="3">ir</token>
+        <token token_id="4">varend</token>
+        <token token_id="5">gut</token>
+        <token token_id="6">Mr</token>
+        <token token_id="7">.</token>
+        <token token_id="8">Haus</token>
+        <token token_id="9">Thullenden</token>
+        <token token_id="10">der</token>
+        <token token_id="11">bartscherer</token>
+        <token token_id="12">u</token>
+        <token token_id="13">.</token>
+        <token token_id="14">Elsin</token>
+        <token token_id="15">sin</token>
+        <token token_id="16">ewirtin</token>
+        <token token_id="17">,</token>
+        <token token_id="18">darnach</token>
+        <token token_id="19">widmet</token>
+        <token token_id="20">si</token>
+        <token token_id="21">im</token>
+        <token token_id="22">iren</token>
+        <token token_id="23">dritten</token>
+        <token token_id="24">seil</token>
+        <token token_id="25">in</token>
+        <token token_id="26">dem</token>
+        <token token_id="27">Hus</token>
+        <token token_id="28">zem</token>
+        <token token_id="29">Steinenkelt</token>
+        <token token_id="30">,</token>
+    </text>
+    <spans>
+        <span id="0" start="1" end="1" confidence="0.9342653751373291" text="machten"
+            element="trigger" class="bequest" />
+        <span id="1" start="3" end="3" confidence="0.998963475227356" text="ir" element="reference"
+            class="per">
+            <span id="9" start="3" end="3" confidence="0.9999873638153076" text="ir" element="head"
+                class="nam" />
+        </span>
+        <span id="2" start="6" end="11" confidence="0.9881515999635061"
+            text="Mr . Haus Thullenden der bartscherer" element="reference" class="per">
+            <span id="11" start="8" end="9" confidence="0.999995768070221" text="Haus Thullenden"
+                element="head" class="nam" />
+            <span id="10" start="6" end="7" confidence="0.8059023022651672" text="Mr ."
+                element="appo" class="per">
+                <span id="13" start="6" end="7" confidence="0.9999997615814209" text="Mr ."
+                    element="head" class="title" />
+            </span>
+            <span id="12" start="10" end="11" confidence="0.9993598759174347" text="der bartscherer"
+                element="appo" class="per">
+                <span id="14" start="11" end="11" confidence="0.9999992847442627" text="bartscherer"
+                    element="head" class="occ" norm="bartscherer" />
+            </span>
+        </span>
+        <span id="3" start="14" end="16" confidence="0.9998114307721456" text="Elsin sin ewirtin"
+            element="reference" class="per">
+            <span id="15" start="14" end="14" confidence="0.9999996423721313" text="Elsin"
+                element="head" class="nam" />
+            <span id="16" start="15" end="16" confidence="0.9999484419822693" text="sin ewirtin"
+                element="appo" class="per">
+                <span id="18" start="16" end="16" confidence="1.0" text="ewirtin" element="head"
+                    class="fam" />
+                <span id="17" start="15" end="15" confidence="0.9999934434890747" text="sin"
+                    element="reference" class="per">
+                    <span id="19" start="15" end="15" confidence="0.9999992847442627" text="sin"
+                        element="head" class="nam" />
+                </span>
+            </span>
+        </span>
+        <span id="4" start="19" end="19" confidence="0.9641940593719482" text="widmet"
+            element="trigger" class="bequest" />
+        <span id="5" start="20" end="20" confidence="0.8338015675544739" text="si"
+            element="reference" class="per">
+            <span id="20" start="20" end="20" confidence="0.9999995231628418" text="si"
+                element="head" class="nam" />
+        </span>
+        <span id="6" start="21" end="21" confidence="0.876197874546051" text="im"
+            element="reference" class="per">
+            <span id="21" start="21" end="21" confidence="0.9999982118606567" text="im"
+                element="head" class="nam" />
+        </span>
+        <span id="7" start="22" end="22" confidence="0.8079956769943237" text="iren"
+            element="reference" class="per">
+            <span id="22" start="22" end="22" confidence="0.9999996423721313" text="iren"
+                element="head" class="nam" />
+        </span>
+        <span id="8" start="26" end="29" confidence="0.9276484102010727"
+            text="dem Hus zem Steinenkelt" element="reference" class="loc">
+            <span id="23" start="27" end="29" confidence="0.9988962610562643"
+                text="Hus zem Steinenkelt" element="head" class="type" />
+        </span>
+    </spans>
+    <relations />
+    <eventGroups>
+        <eventGroup event_id="0" ref="" class="bequest" start="1" end="1" type="event">
+            <trigger start="1" end="1" text="machten" confidence="0.8513567447662354" ref="0" />
+            <event event_id="0.0" />
+        </eventGroup>
+        <eventGroup event_id="1" ref="" class="bequest" start="19" end="19" type="event">
+            <trigger start="19" end="19" text="widmet" confidence="0.6624021530151367" ref="4" />
+            <event event_id="1.0">
+                <role ref="3" text="Elsin sin ewirtin" role="bequeather"
+                    confidence="0.9535217881202698" />
+                <role ref="5" text="si" role="beneficiary" confidence="0.8033375144004822" />
+                <role ref="8" text="dem Hus zem Steinenkelt" role="property"
+                    confidence="0.7260733246803284" />
+            </event>
+        </eventGroup>
+        <eventGroup event_id="2" class="family" start="15" end="16" ref="16" type="state">
+            <trigger start="16" end="16" text="ewirtin" ref="18" />
+            <event event_id="2.0">
+                <role role="family-a" ref="3" text="Elsin sin ewirtin" />
+                <role role="family-b" ref="17" text="sin" />
+            </event>
+        </eventGroup>
+    </eventGroups>
+</document>
