@@ -51,8 +51,7 @@ span {
 }
 
 span:after {
-    content: attr(text) " (" attr(class) ") [" attr(element) "]" ;
-    background-color: hsl(0, 31%, 85%);
+    content: attr('') " (" attr(class) ") [" attr(element) "]" ;
     display: block;
 }
 
