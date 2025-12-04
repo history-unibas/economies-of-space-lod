@@ -304,7 +304,7 @@ limit 50;
 -- inspect
 select 
 	unnest(xpath('//role', 
-event_group)) as role,  ev.event,
+event_group)) as role,  ev.event, ev.document_id,
 	ev.ev_gr_id, ev.event_id, evg.ev_gr_class, ev.year, evg.entryid
 from t_auto_event_with_id ev, t_auto_event_group_with_properties evg
 where ev_gr_length > 1
@@ -350,7 +350,7 @@ from tw1;
  * CREATE TABLE for roles 
  */
 
-drop view t_auto_role;
+drop table t_auto_role;
 create table t_auto_role as
 with tw1 as (
 select ev.document_id, evg.entryid,
@@ -358,8 +358,7 @@ select ev.document_id, evg.entryid,
 ev.event)) as role, 
 	ev.ev_gr_id, ev.event_n, ev.event_id, evg.ev_gr_class, ev.year, ev.event
 from t_auto_event_with_id ev, t_auto_event_group_with_properties evg
-where ev_gr_length > 1
-and ev.entryid = evg.entryid
+where ev.entryid = evg.entryid
 and ev.ev_gr_id = evg.ev_gr_id)
 select  document_id,
 	(xpath('//role/@role', 
@@ -379,7 +378,7 @@ from tw1;
 
 
 
--- test view
+-- inspect table
 
 select *
 from t_auto_role
@@ -392,22 +391,34 @@ limit 200;
 
 -- test join with event group, event and role
 
-select ev.ev_gr_id, ev.ev_gr_length, ev.event_id, evg.dossierid, evg.ev_gr_class, ev.year, 
-rol.role_role, rol.role_text,
+select *
+from t_auto_event_with_id
+limit 20;
+
+select *
+from t_auto_event_group_with_properties
+order by dossierid, document_id, ev_gr_id
+limit 30;
+
+
+
+select evg.dossierid, ev.event_id, ev.ev_gr_id, ev.ev_gr_length,   evg.ev_gr_class, ev.year, 
+rol.role_role, rol.role_text, rol.ev_gr_length,
 evg.event_group, evg.entryid
-from v_event_with_id ev, v_event_group_with_properties evg, v_role as rol
-where ev_gr_length > 2
-and ev.entryid = evg.entryid
+from t_auto_event_with_id ev, t_auto_event_group_with_properties evg, t_auto_role as rol
+where ev.ev_gr_length = 2
+and ev.dossierid = evg.dossierid 
+and ev.document_id = evg.document_id
 and ev.ev_gr_id = evg.ev_gr_id
-and rol.entryid = evg.entryid
+and rol.document_id = evg.document_id
 and rol.event_id = ev.event_id
 and rol.ev_gr_id = ev.ev_gr_id
-and rol.ev_length > 3
-and rol.ev_length < 8
 limit 50;
 
 
-
+-- VERIFY
+--and rol.ev_gr_length > 3
+--and rol.ev_gr_length < 8
 
 
 
@@ -421,18 +432,29 @@ limit 50;
  */
 
 
+select count(*) as n
+from t_auto_event_with_id;
+
+select count(*) as n
+from t_auto_event_group_with_properties evg;
+
+select count(*) as n
+from t_auto_role tr;
+
+
 -- create table
---drop table t_roles_with_events ;
-create table t_roles_with_events as
+drop table t_auto_roles_with_events ;
+create table t_auto_roles_with_events as
 select  row_number() OVER (ORDER BY 1)::INTEGER as pk_trwe,
-ev.ev_gr_id, ev.ev_gr_length, ev.event_id, evg.dossierid, evg.ev_gr_class, ev.year, 
-evg.event_group,
+evg.dossierid, evg.document_id, ev.ev_gr_id, ev.ev_gr_length, 
+ev.event_id, evg.ev_gr_class, ev.year, evg. ev.event,rol.role,
 rol.role_role, rol.role_text, rol.role_ref,
 evg.entryid
-from v_event_with_id ev, v_event_group_with_properties evg, v_role as rol
-where ev.entryid = evg.entryid
+from t_auto_event_with_id ev, t_auto_event_group_with_properties evg, t_auto_role as rol
+where ev.dossierid = evg.dossierid 
+and ev.document_id = evg.document_id
 and ev.ev_gr_id = evg.ev_gr_id
-and rol.entryid = evg.entryid
+and rol.document_id = evg.document_id
 and rol.event_id = ev.event_id
 and rol.ev_gr_id = ev.ev_gr_id;
 
@@ -440,42 +462,101 @@ and rol.ev_gr_id = ev.ev_gr_id;
 
 -- test t_roles_with_events
 
-select *
-from t_roles_with_events
+select pk_trwe, dossierid, document_id, ev_gr_id,  role_ref, 
+	"year", ev_gr_class, role_role, role_text, 
+	ev_gr_length, event_id, role, event, entryid
+from t_auto_roles_with_events
 where ev_gr_length > 3
-order by entryid, ev_gr_id, event_id, role_ref
+order by dossierid, document_id, ev_gr_id, event_id, role_ref
 limit 200;
 
 
+/*
+ * Count event groups, events and roles
+ */
 
 
-
-select role_role, count(*) as number
-from t_roles_with_events
-group by role_role
-order by number desc;
-
-
-select ev_gr_class, role_role, count(*) as number
-from t_roles_with_events
-group by ev_gr_class,role_role
-order by number desc;
+-- count event-type classes
+select ev_gr_class, ev_gr_type, count(*) as number
+from t_auto_event_group_with_properties
+group by ev_gr_class, ev_gr_type
+order by ev_gr_class, ev_gr_type ;
 
 
+-- event groups with more then one event
+select *
+from t_auto_event_group_with_properties
+where event_length > 1
+order by dossierid, document_id, ev_gr_id::integer
+limit 20;
+
+
+-- count event types AT GROUPS LEVEL
 select ev_gr_class, count(*) as number
-from t_roles_with_events
+from t_auto_event_group_with_properties
 group by ev_gr_class
 order by number desc;
 
 
 
+-- count event types AT SINGLE EVENT LEVEL
+select ev_gr_class, sum(event_length) as number
+from t_auto_event_group_with_properties
+group by ev_gr_class
+order by number desc;
+
+
+-- inspect roles
+
+select *
+from t_auto_roles_with_events
+limit 30;
+
+
+-- count roles
+select role_role, count(*) as number
+from t_auto_roles_with_events
+group by role_role
+order by number desc;
+
+
+select ev_gr_class, role_role, count(*) as number
+from t_auto_roles_with_events
+group by ev_gr_class,role_role
+order by number desc;
+
+
+select ev_gr_class, count(*) as number
+from t_auto_roles_with_events
+group by ev_gr_class
+order by number desc;
+
+select ev_gr_class, count(*) as class_number
+from t_auto_roles_with_events
+group by ev_gr_class
+order by class_number desc;
+
+
+select ev_gr_class, count(*) as class_number
+from t_auto_event_with_id taewi 
+group by ev_gr_class
+order by class_number desc;
+
+select *
+from t_auto_event_with_id taewi 
+order by dossierid, document_id, ev_gr_id::integer
+limit 20;
+
+
+-- count sigle events types and role numbers per type
 with tw1 as (
 select ev_gr_class, role_role, count(*) as role_number
-from t_roles_with_events
+from t_auto_roles_with_events
 group by ev_gr_class,role_role),
 tw2 as (
-select ev_gr_class, count(*) as class_number
-from t_roles_with_events
+-- count event types AT SINGLE EVENT LEVEL
+select ev_gr_class, sum(event_length) as class_number
+from t_auto_event_group_with_properties
 group by ev_gr_class)
 select tw2.ev_gr_class, tw2.class_number, 
 tw1.role_role, tw1.role_number
