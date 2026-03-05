@@ -15,44 +15,44 @@ Peter Schorch der Schuemacher contra Friedrich Reinen , Spitthalkiefer , als Vog
 
 #### Annotated Transcription
 
-    <spans>
-        <span id="691" start="0" end="3" text="Peter Schorch der Schuemacher" element="reference" class="per" numerus="sgl" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass="">
-        <span id="697" start="0" end="1" text="Peter Schorch" element="head" class="nam" subclass=""/>
-        <span id="703" start="2" end="3" text="der Schuemacher" element="appo" class="occ" numerus="sgl" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass="">
-            <span id="709" start="3" end="3" text="Schuemacher" element="head" class="occ" subclass=""/>
+```
+<spans>
+    <span id="0" start="0" end="3" confidence="0.9993112683296204" text="Peter Schorch der Schuemacher" element="reference" class="per">
+        <span id="6" start="0" end="1" confidence="0.9999982714653015" text="Peter Schorch" element="head" class="nam" />
+        <span id="7" start="2" end="3" confidence="0.9998558461666107" text="der Schuemacher" element="appo" class="per">
+            <span id="8" start="3" end="3" confidence="0.9999305009841919" text="Schuemacher" element="head" class="occ" norm="schuhmacher" />
         </span>
+    </span>
+    <span id="1" start="4" end="4" confidence="0.9880346655845642" text="contra" element="trigger" class="litigation" />
+    <span id="2" start="5" end="8" confidence="0.9909403324127197" text="Friedrich Reinen , Spitthalkiefer" element="reference" class="per">
+        <span id="9" start="5" end="6" confidence="0.9999944567680359" text="Friedrich Reinen" element="head" class="nam" />
+        <span id="10" start="8" end="8" confidence="0.9890087246894836" text="Spitthalkiefer" element="appo" class="per">
+            <span id="11" start="8" end="8" confidence="1.0" text="Spitthalkiefer" element="head" class="occ" norm="unk" />
         </span>
-        <span id="830" start="4" end="4" text="contra" element="trigger" class="litigation" tense="pres" polarity="pos" modality="ass" subclass=""/>
-        <span id="721" start="5" end="8" text="Friedrich&#10;Reinen , Spitthalkiefer" element="reference" class="per" numerus="sgl" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass="">
-        <span id="727" start="5" end="6" text="Friedrich&#10;Reinen" element="head" class="nam" subclass=""/>
-        <span id="733" start="8" end="8" text="Spitthalkiefer" element="appo" class="occ" numerus="sgl" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass="org-job">
-            <span id="733_head" start="8" end="8" element="head" class="occ" text="Spitthalkiefer" subclass="org-job"/>
-        </span>
-        </span>
-        <span id="739" start="11" end="20" text="Vogt Jacob Schwartzen&#10;des Küfers sel . Kinder in Eschemervorstatt" element="reference" class="per" numerus="sgl" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass="">
-        <span id="745" start="11" end="11" text="Vogt" element="head" class="repr" subclass=""/>
-        <span id="818" start="12" end="20" text="Jacob Schwartzen&#10;des Küfers sel . Kinder in Eschemervorstatt" element="reference" class="per" numerus="grp" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass="">
-            <span id="757" start="12" end="17" text="Jacob Schwartzen&#10;des Küfers sel ." element="reference" class="per" numerus="sgl" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass="">
-            <span id="751" start="12" end="13" text="Jacob Schwartzen" element="head" class="nam" subclass=""/>
-            <span id="763" start="14" end="15" text="des Küfers" element="appo" class="occ" numerus="sgl" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass="">
-                <span id="769" start="15" end="15" text="Küfers" element="head" class="occ" subclass=""/>
+    </span>
+    <span id="3" start="11" end="11" confidence="0.9881656169891357" text="Vogt" element="reference" class="per">
+        <span id="12" start="11" end="11" confidence="0.9999998807907104" text="Vogt" element="head" class="per-repr" />
+    </span>
+    <span id="4" start="12" end="20" confidence="0.76874088578754" text="Jacob Schwartzen des Kiefers sel . Kinder in Eschenervorstatt" element="reference" class="per">
+        <span id="14" start="18" end="18" confidence="0.9999938011169434" text="Kinder" element="head" class="nam" />
+        <span id="13" start="12" end="17" confidence="0.9194889068603516" text="Jacob Schwartzen des Kiefers sel ." element="reference" class="per">
+            <span id="16" start="12" end="13" confidence="0.9999716281890869" text="Jacob Schwartzen" element="head" class="nam" />
+            <span id="17" start="14" end="15" confidence="0.9994527399539948" text="des Kiefers" element="appo" class="per">
+                <span id="19" start="15" end="15" confidence="0.9999866485595703" text="Kiefers" element="head" class="occ" norm="küfer" />
             </span>
-            <span id="824" start="16" end="17" text="sel ." element="attr" class="dead" numerus="sgl" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass=""/>
-            </span>
-            <span id="775" start="18" end="18" text="Kinder" element="head" class="fam" subclass=""/>
-            <span id="781" start="19" end="20" text="in Eschemervorstatt" element="attr" class="loc" numerus="sgl" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass="">
-            <span id="793" start="20" end="20" text="Eschemervorstatt" element="reference" class="fac" numerus="sgl" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass="district">
-                <span id="787" start="20" end="20" text="Eschemervorstatt" element="head" class="nam" subclass=""/>
-            </span>
+            <span id="18" start="16" end="17" confidence="0.9986332952976227" text="sel ." element="attr" class="dead" />
+        </span>
+        <span id="15" start="19" end="20" confidence="0.9858563542366028" text="in Eschenervorstatt" element="attr" class="loc">
+            <span id="20" start="20" end="20" confidence="0.9999572038650513" text="Eschenervorstatt" element="reference" class="loc">
+                <span id="21" start="20" end="20" confidence="0.9999732971191406" text="Eschenervorstatt" element="head" class="type" />
             </span>
         </span>
-        </span>
-        <span id="836" start="24" end="38" text="einem Känell , dadurch dem Kläger das Wasser&#10;in seinen Privaten dringet wegen einem Camin" element="other" class="other" subclass="">
-        <span id="799" start="28" end="29" text="dem Kläger" element="reference" class="per" numerus="sgl" specificity="spc" tense="pres" polarity="pos" modality="ass" subclass="">
-            <span id="805" start="29" end="29" text="Kläger" element="head" class="role" subclass=""/>
-        </span>
-        </span>
-    </spans>
+    </span>
+    <span id="5" start="28" end="29" confidence="0.8554110825061798" text="dem Kläger" element="reference" class="per">
+        <span id="22" start="29" end="29" confidence="0.9999983310699463" text="Kläger" element="head" class="role" />
+    </span>
+</spans>
+```
 
 -----
 

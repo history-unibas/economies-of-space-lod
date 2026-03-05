@@ -1,18 +1,19 @@
 
 /*
  * 
- * New column 'annotation_manual' without array, just XML value
+ * New column 'annotation_automated' without array, just XML value
  *  
  */
 
 -- event groups XML
 
-select unnest(xpath('//myns:eventGroup', 
-pe.annotation_manual, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as event_group,
+select unnest(xpath('//eventGroup', 
+pe.annotation_automated)) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
+where pe.entryid = 'd7cb61aa-3215-49e3-b802-80a4540f35d6_20250307';
 where pe.dossierid = 'HGB_1_002_026' 
-AND pe.annotation_manual is not null;
+AND pe.annotation_automated is not null;
 
 
 /*
@@ -23,21 +24,24 @@ AND pe.annotation_manual is not null;
 */
 
 with tw1 as (
-select unnest(xpath('//myns:eventGroup', 
-pe.annotation_manual, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as event_group,
+select unnest(xpath('//eventGroup', 
+pe.annotation_automated)) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
-where pe.annotation_manual is not null
-and pe.dossierid = 'HGB_1_002_026'
+where --pe.entryid = 'd7cb61aa-3215-49e3-b802-80a4540f35d6_20250307'
+--where pe.annotation_automated is not null
+--and 
+pe.dossierid = 'HGB_1_002_026'
 )
 select 
-	(xpath('//myns:eventGroup/@event_id', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_id,
-	array_length(xpath('//myns:eventGroup/myns:event', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])), 1) events_count,
+	(xpath('eventGroup/@event_id', 
+event_group))[1]::text ev_gr_id,
+	array_length(xpath('eventGroup/event', 
+event_group), 1) events_count,
 	event_group, year, dossierid, pageid, entryid
 from tw1
-order by events_count DESC;
+order by dossierid, entryid, ev_gr_id
+;
 
 
 
@@ -45,28 +49,38 @@ order by events_count DESC;
 -- event group with properties
 
 with tw1 as (
-select unnest(xpath('//myns:eventGroup', 
-pe.annotation[1], (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as event_group,
+select unnest(xpath('//eventGroup', 
+pe.annotation_automated)) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
-where pe.annotation is not null
-and pe.dossierid = 'HGB_1_002_026'
+where pe.annotation_automated is not null
+and -- pe.entryid = 'd7cb61aa-3215-49e3-b802-80a4540f35d6_20250307'
+pe.dossierid = 'HGB_1_002_026'
 )
 select 
-	(xpath('//myns:eventGroup/@class', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_class,
-	(xpath('//myns:eventGroup/@event_id', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_id,
-	(xpath('//myns:eventGroup/@polarity', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_polarity,
-	(xpath('//myns:eventGroup/@tense', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_tense,
-	(xpath('//myns:eventGroup/@modality', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_modality,
-	(xpath('//myns:eventGroup/myns:trigger/@text', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_trigger,
-	(xpath('//myns:eventGroup/myns:event', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) event,
+	(xpath('eventGroup/@class', 
+event_group))[1]::text ev_gr_class,
+(xpath('eventGroup/@type', 
+event_group))[1]::text ev_gr_type,
+	(xpath('eventGroup/@event_id', 
+event_group))[1]::text::integer ev_gr_id,
+(xpath('eventGroup/@ref', 
+event_group))[1]::text ev_gr_ref,
+/*	
+ * (xpath('eventGroup/@polarity', 
+event_group))[1]::text ev_gr_polarity,
+	(xpath('eventGroup/@tense', 
+event_group))[1]::text ev_gr_tense,
+	(xpath('eventGroup/@modality', 
+event_group))[1]::text ev_gr_modality,
+*/
+-- 'résuppose que le trigger soit unique par eventGroup'
+	(xpath('eventGroup/trigger/@text', 
+event_group))[1]::text ev_gr_trigger_text,
+	(xpath('eventGroup/trigger/@ref', 
+event_group))[1]::text ev_gr_trigger_ref,
+	(xpath('eventGroup/event', 
+event_group)) event,
 	event_group, year, dossierid, pageid, entryid
 from tw1;
 
@@ -74,39 +88,47 @@ from tw1;
 
 
 /*
- * CREATE VIEW for event group with properties
+ * CREATE TABLE for event group with properties
  */
 
 --drop view v_event_group_with_properties;
-create or replace view v_event_group_with_properties AS
+
+create table t_event_group_with_properties AS
 with tw1 as (
-select unnest(xpath('//myns:eventGroup', 
-pe.annotation[1], (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as event_group,
+select unnest(xpath('//eventGroup', 
+pe.annotation_automated)) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
-where pe.annotation is not null
---and pe.dossierid = 'HGB_1_002_026'
+where pe.annotation_automated is not null
 )
 select 
-	(xpath('//myns:eventGroup/@class', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_class,
-	(xpath('//myns:eventGroup/@event_id', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_id,
-	(xpath('//myns:eventGroup/@polarity', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_polarity,
-	(xpath('//myns:eventGroup/@tense', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_tense,
-	(xpath('//myns:eventGroup/@modality', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_modality,
-	(xpath('//myns:eventGroup/myns:trigger/@text', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text ev_gr_trigger,
+	(xpath('eventGroup/@class', 
+event_group))[1]::text ev_gr_class,
+(xpath('eventGroup/@type', 
+event_group))[1]::text ev_gr_type,
+	(xpath('eventGroup/@event_id', 
+event_group))[1]::text::integer ev_gr_id,
+(xpath('eventGroup/@ref', 
+event_group))[1]::text ev_gr_ref,
+-- 'résuppose que le trigger soit unique par eventGroup'
+	(xpath('eventGroup/trigger/@text', 
+event_group))[1]::text ev_gr_trigger_text,
+	(xpath('eventGroup/trigger/@ref', 
+event_group))[1]::text ev_gr_trigger_ref,
+	(xpath('eventGroup/event', 
+event_group)) event,
 	event_group, year, dossierid, pageid, entryid
-from tw1;
+from tw1
+order by dossierid, entryid, ev_gr_id;
 
 
--- test view
+select count(*) as num
+from t_event_group_with_properties;
+
+
+-- inspect
 select *
-from v_event_group_with_properties
+from t_event_group_with_properties
 offset 500
 limit 30;
 
@@ -116,9 +138,8 @@ limit 30;
  * 
  */
 
-
 select ev_gr_class, count(*) as number
-from v_event_group_with_properties
+from t_event_group_with_properties
 group by ev_gr_class 
 order by number desc;
 
@@ -139,76 +160,79 @@ order by year;
 -- select events
 
 select 
-	unnest(xpath('//myns:event', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as event, 
+	unnest(xpath('//event', 
+event_group)) as event, 
 	event_group, ev_gr_id, year, dossierid, pageid, entryid
-from v_event_group_with_properties
-where entryid = '4a355df2-1398-4803-bc32-a8995b166927_20250307'
+from t_event_group_with_properties
+where dossierid = 'HGB_1_002_026'
+offset 50
 limit 20;
 
 
 with tw1 as (
 select 
-	unnest(xpath('//myns:event', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as event, 
+	unnest(xpath('//event', 
+event_group)) as event, 
 	event_group, ev_gr_id, year, dossierid, pageid, entryid
-from v_event_group_with_properties
-where entryid = '4a355df2-1398-4803-bc32-a8995b166927_20250307'
+from t_event_group_with_properties
+where dossierid = 'HGB_1_002_026'
 limit 20)
 select
-	replace((xpath('//myns:event/@event_id', 
-event, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text, '.', '-') as event_id,
+	replace((xpath('event/@event_id', 
+event))[1]::text, '.', '-') as event_id,
 	event, 
-	array_length(xpath('//myns:event', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])),1) as ev_gr_length,
+	array_length(xpath('//event', 
+event_group),1) as ev_gr_length,
 	--event_group, 
 	ev_gr_id, year, dossierid, pageid, entryid
-from tw1;
+from tw1
+order by dossierid, entryid, ev_gr_id ;
 
 
 
 
 
 /*
- * CREATE VIEW for events with id
+ * CREATE TABLE for events with id
  */
 
---drop view v_event_with_id;
-create or replace view v_event_with_id as
+drop view v_event_with_id;
+
+drop table t_event_with_id;
+create table t_event_with_id as
 with tw1 as (
 select 
-	unnest(xpath('//myns:event', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as event, 
+	unnest(xpath('//event', 
+event_group)) as event, 
 	event_group, ev_gr_id, year, dossierid, pageid, entryid
-from v_event_group_with_properties
---where entryid = '4a355df2-1398-4803-bc32-a8995b166927_20250307'
+from t_event_group_with_properties
 )
 select
-	replace((xpath('//myns:event/@event_id', 
-event, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text, '.', '-') as event_id,
+	replace((xpath('event/@event_id', 
+event))[1]::text, '.', '-') as event_id,
 	event, 
-	array_length(xpath('//myns:event', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])),1) as ev_gr_length,
+	array_length(xpath('//event', 
+event_group),1) as ev_gr_length,
 	--event_group, 
 	ev_gr_id, year, dossierid, pageid, entryid
-from tw1;
+from tw1
+order by dossierid, entryid, ev_gr_id ;
 
 
--- test view
 
-select *
-from v_event_with_id
+-- inspect
+select substring(event_id FROM '-(.*)') event_own_id, *
+from t_event_with_id
 where ev_gr_length > 1
 limit 50;
 
 
-
-
 -- test join with event group
 
-select ev.ev_gr_id, ev.event_id, evg.ev_gr_class, ev.year, ev.event, evg.event_group, evg.entryid
-from v_event_with_id ev, v_event_group_with_properties evg
-where ev_gr_length > 1
+select ev.ev_gr_id, substring(event_id FROM '-(.*)')::integer event_own_id,
+		ev.event_id, ev_gr_length, evg.ev_gr_class, ev.year, ev.event, evg.event_group, evg.entryid
+from t_event_with_id ev, t_event_group_with_properties evg
+where ev_gr_length > 1  
 and ev.entryid = evg.entryid
 and ev.ev_gr_id = evg.ev_gr_id
 limit 50;
@@ -222,86 +246,83 @@ limit 50;
  * 
  */
  
-
 -- inspect
-select 
-	unnest(xpath('//myns:role', 
-event_group, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as role, 
-	ev.ev_gr_id, ev.event_id, evg.ev_gr_class, ev.year, ev.event, evg.entryid
-from v_event_with_id ev, v_event_group_with_properties evg
-where ev_gr_length > 1
-and ev.entryid = evg.entryid
-and ev.ev_gr_id = evg.ev_gr_id
+select unnest(xpath('//role', 
+event)) as role, 
+substring(event_id FROM '-(.*)')::int event_own_id, 
+ev_gr_id, event_id, ev_gr_length,
+event, year,dossierid,pageid,entryid
+from t_event_with_id
+--where ev_gr_length > 1
 limit 50;
 
 -- roles with properties
 with tw1 as (
-select 
-	unnest(xpath('//myns:role', 
-event, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as role, 
-	ev.ev_gr_id, ev.event_id, evg.ev_gr_class, ev.year, ev.event, evg.entryid
-from v_event_with_id ev, v_event_group_with_properties evg
-where ev_gr_length > 1
-and ev.entryid = evg.entryid
-and ev.ev_gr_id = evg.ev_gr_id
+select unnest(xpath('//role', 
+event)) as role, 
+substring(event_id FROM '-(.*)')::int event_own_id, 
+ev_gr_id, event_id, ev_gr_length,
+event, year,dossierid,pageid,entryid
+from t_event_with_id
 limit 50)
 select
-	(xpath('//myns:role/@role', 
-role, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text as role_role,
-	(xpath('//myns:role/@ref', 
-role, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text as role_ref,
-	(xpath('//myns:role/@text', 
-role, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text as role_text,
+	(xpath('role/@role', 
+role))[1]::text as role_role,
+	(xpath('role/@ref', 
+role))[1]::text as role_ref,
+	(xpath('role/@text', 
+role))[1]::text as role_text,
 	role, 
 	event,
-	array_length(xpath('//myns:role', 
-event, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])),1) as ev_gr_length,
-	ev_gr_id, event_id, ev_gr_class, year, entryid
-from tw1;
+	ev_gr_length,
+	ev_gr_id, substring(event_id FROM '-(.*)')::int event_own_id, 
+	event_id, year, entryid
+from tw1
+order by entryid, ev_gr_id ;
 
 
 
 
-
+vacuum;
 
 
 
 /*
- * CREATE VIEW for roles 
+ * CREATE TABLE for roles 
  */
 
---drop view v_role;
-create or replace view v_role as
+drop table t_role;
+create table t_role as
 with tw1 as (
-select 
-	unnest(xpath('//myns:role', 
-event, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']]))) as role, 
-	ev.ev_gr_id, ev.event_id, evg.ev_gr_class, ev.year, ev.event, evg.entryid
-from v_event_with_id ev, v_event_group_with_properties evg
-where ev.entryid = evg.entryid
-and ev.ev_gr_id = evg.ev_gr_id)
+select unnest(xpath('//role', 
+event)) as role, 
+substring(event_id FROM '-(.*)')::int event_own_id, 
+ev_gr_id, event_id, ev_gr_length,
+event, year,dossierid,pageid,entryid
+from t_event_with_id)
 select
-	ev_gr_class, year, event_id,
-	(xpath('//myns:role/@role', 
-role, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text as role_role,
-	(xpath('//myns:role/@ref', 
-role, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text as role_ref,
-	(xpath('//myns:role/@text', 
-role, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])))[1]::text as role_text,
-	array_length(xpath('//myns:role', 
-event, (ARRAY[ARRAY['myns', 'https://dhbern.github.io/BeNASch/ns']])),1) as ev_length,
+	(xpath('role/@role', 
+role))[1]::text as role_role,
+	(xpath('role/@ref', 
+role))[1]::text as role_ref,
+	(xpath('role/@text', 
+role))[1]::text as role_text,
 	role, 
 	event,
-	ev_gr_id,   entryid
-from tw1;
+	ev_gr_length,
+	ev_gr_id, substring(event_id FROM '-(.*)')::int event_own_id, 
+	event_id, year, entryid
+from tw1
+order by entryid, ev_gr_id ;
 
 
 
 
--- test view
+
+-- inspect
 
 select *
-from v_role
+from t_role
 where ev_length > 3
 order by entryid, ev_gr_id, event_id, role_ref
 limit 200;
@@ -331,6 +352,10 @@ limit 50;
 
 
 /*
+ * 
+ *  NOT NEEDED !!!
+ * 
+ * 
  * CREATE TABLE roles_with_events
  * 
  * When there are more data add a primary key and indexes on columns,
@@ -341,7 +366,7 @@ limit 50;
 
 
 -- create table
---drop table t_roles_with_events ;
+drop table t_roles_with_events ;
 create table t_roles_with_events as
 select  row_number() OVER (ORDER BY 1)::INTEGER as pk_trwe,
 ev.ev_gr_id, ev.ev_gr_length, ev.event_id, evg.dossierid, evg.ev_gr_class, ev.year, 
