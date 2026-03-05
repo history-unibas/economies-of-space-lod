@@ -11,7 +11,7 @@ select unnest(xpath('//eventGroup',
 pe.annotation_automated)) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
-where pe.entryid = 'd7cb61aa-3215-49e3-b802-80a4540f35d6_20250307';
+--where pe.entryid = 'd7cb61aa-3215-49e3-b802-80a4540f35d6_20250307';
 where pe.dossierid = 'HGB_1_002_026' 
 AND pe.annotation_automated is not null;
 
@@ -280,10 +280,6 @@ role))[1]::text as role_text,
 from tw1
 order by entryid, ev_gr_id ;
 
-
-
-
-vacuum;
 
 
 

@@ -22,3 +22,5 @@ See the [documentation about this transfomation](documentation/information_to_st
 <br/>
 
 ## Analysis of the available information
+
+

@@ -145,19 +145,19 @@ limit 30;
  * 
  */
 
-
+-- class
 select ev_gr_class, count(*) as number
 from t_auto_event_group_with_properties
 group by ev_gr_class 
 order by number desc;
 
-
+-- type
 select ev_gr_type, count(*) as number
 from t_auto_event_group_with_properties
 group by ev_gr_type 
 order by number desc;
 
-
+-- class and type
 select ev_gr_class, ev_gr_type, count(*) as number
 from t_auto_event_group_with_properties
 group by ev_gr_class, ev_gr_type
@@ -431,12 +431,13 @@ limit 50;
  * 
  */
 
+select count(*) as n
+from t_auto_event_group_with_properties evg;
+
 
 select count(*) as n
 from t_auto_event_with_id;
 
-select count(*) as n
-from t_auto_event_group_with_properties evg;
 
 select count(*) as n
 from t_auto_role tr;

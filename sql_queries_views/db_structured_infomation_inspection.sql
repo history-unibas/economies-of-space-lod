@@ -1,12 +1,12 @@
 
+-- number of spans: 2569255 on 5 March 2026
+select count(*) as number
+FROM t_spans ts ;
+
 
 select *
 FROM t_spans ts 
 limit 10;
-
-
-select count(*) as number
-FROM t_spans ts ;
 
 
 select *
@@ -16,43 +16,75 @@ order by year, span_id;
 
 
 
+
+-- with no parent, i.e. root span
 select *
-FROM t_roles_with_events trwe 
+FROM t_spans ts 
+where ts.parent_span_id is null
 limit 10;
 
 
-select count(*) as number
-FROM t_roles_with_events ;
-
---select *
-select year, event_id, ev_gr_class, role_role as role, role_text, role_ref  
-from t_roles_with_events
-where dossierid = 'HGB_1_002_046'
-order by year, event_id ;
+-- classes of root spans
+select span_class, count(*) as num_count
+FROM t_spans ts 
+where ts.parent_span_id is null
+group by span_class 
+order by num_count desc;
 
 
 
 
+-- event groups
+select *
+from t_event_group_with_properties tegwp 
+limit 10;
 
 
--- connection with spans
-
-select tre.year, tre.event_id, tre.ev_gr_class, tre.role_role as role, tre.role_text, tre.role_ref,
-		ts.span_class, tre.event_id,
-		ts1.span_text as child_text, ts1.span_class child_class, ts1.parent_span_id 
-from t_roles_with_events tre, 
-	t_spans ts,
-	t_spans ts1
-where tre.dossierid = 'HGB_1_002_046'
-and tre.role_ref = ts.span_id 
-and ts.dossierid = 'HGB_1_002_046'
-and ts1.parent_span_id = ts.span_id 
-and ts1.dossierid = 'HGB_1_002_046'
-order by tre.year, tre.event_id, tre.role_ref  ;
+-- number of class instances
+select ev_gr_class, count(*) as num_count
+from t_event_group_with_properties tegwp 
+group by ev_gr_class 
+order by num_count desc;
 
 
+-- roles
+select *
+from t_auto_role tar 
+limit 10;
+
+select 
+from t_auto_roles_with_events tarwe 
+limit 10;
+
+select tar.role_role, count(*) as num_count
+from t_auto_role tar 
+group by role_role 
+order by num_count desc;
+
+select tar.role_role, tar.ev_gr_class, count(*) as num_count
+from t_auto_role tar 
+group by role_role, ev_gr_class  
+order by num_count desc;
 
 
+with tw1 as (
+select tar.role_role, tar.ev_gr_class, count(*) as num_count
+from t_auto_role tar 
+group by role_role, ev_gr_class  
+), tw2 as (
+select ev_gr_class, count(*) as num_count
+from t_event_group_with_properties tegwp 
+group by ev_gr_class 
+)
+select tw2.ev_gr_class, tw2.num_count num_class, 
+tw1.role_role role, tw1.num_count num_role 
+from tw1, tw2 
+where tw1.ev_gr_class = tw2.ev_gr_class 
+order by tw2.num_count, tw1.num_count ;
 
 
-
+-- 
+select owner1862, count(*) as num_count
+from stabs_dossier 
+group by owner1862 
+order by num_count desc;
