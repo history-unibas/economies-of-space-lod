@@ -1,9 +1,9 @@
 
 
 
-## classes of root spans
+## Classes of root spans
 
-### Query
+### Query
 
 ```
 select span_class, count(*) as num_count

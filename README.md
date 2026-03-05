@@ -24,3 +24,5 @@ See the [documentation about this transfomation](documentation/information_to_st
 ## Analysis of the available information
 
 
+* [Inspection of spans](documentation/inspection_spans.md)
+* [Inspection of events and roles](documentation/inspection_events_roles.md)
