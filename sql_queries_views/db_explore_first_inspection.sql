@@ -35,6 +35,9 @@ and pd.dossierid = sd.dossierid
 order by sd.dossierid
 limit 30;
 
+
+
+
 /*
  * Distribution dans les temps
  * 
@@ -72,3 +75,13 @@ select period, count(*) as number
 from years_with_periods 
 group by "period" 
 order by period;
+
+
+
+create view v_dossier_id_page_id AS
+select pe.dossierid, unnest(pe.pageid) as pageid 
+from project_entry pe ;
+
+select *
+from v_dossier_id_page_id
+limit 10;

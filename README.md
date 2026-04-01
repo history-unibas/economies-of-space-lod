@@ -7,9 +7,11 @@
 * [Examples of archival documents and semantically annotated XML transcriptions](documentation/cards_examples.md)
 * [Documents online for inspection](https://history-unibas.github.io/economies-of-space-lod/)
 
+
+
 In these files are documented corresponding SQL queries:
 
-* [General inspection](sql_queries_views/db_inspection.sql)
+* [First inspection](sql_queries_views/db_explore_first_inspection.sql)
 * [XML documents inspection](sql_queries_views/db_explore_xml_content.sql)
 
 <br/>
@@ -18,11 +20,9 @@ In these files are documented corresponding SQL queries:
 
 See the [documentation about this transfomation](documentation/information_to_structured_data.md)
 
-
 <br/>
 
 ## Analysis of the available information
-
 
 * [Inspection of spans](documentation/inspection_spans.md)
 * [Inspection of events and roles](documentation/inspection_events_roles.md)

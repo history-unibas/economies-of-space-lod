@@ -3,9 +3,10 @@
 
 ## Classes of root spans
 
+
 ### Query
 
-```
+```sql
 select span_class, count(*) as num_count
 FROM t_spans ts 
 where ts.parent_span_id is null

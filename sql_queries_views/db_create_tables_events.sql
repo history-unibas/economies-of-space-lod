@@ -11,7 +11,7 @@ select unnest(xpath('//eventGroup',
 pe.annotation_automated)) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
---where pe.entryid = 'd7cb61aa-3215-49e3-b802-80a4540f35d6_20250307';
+--where pe.entryid = 'd7cb61aa-3215-49e3-b802-80a4540f35d6_20250307'
 where pe.dossierid = 'HGB_1_002_026' 
 AND pe.annotation_automated is not null;
 
@@ -91,7 +91,7 @@ from tw1;
  * CREATE TABLE for event group with properties
  */
 
---drop view v_event_group_with_properties;
+--drop table t_event_group_with_properties;
 
 create table t_event_group_with_properties AS
 with tw1 as (
@@ -122,6 +122,11 @@ from tw1
 order by dossierid, entryid, ev_gr_id;
 
 
+CREATE INDEX ev_gr_class_index ON t_event_group_with_properties (ev_gr_class);
+CREATE INDEX ev_gr_type_index ON t_event_group_with_properties (ev_gr_type);
+CREATE INDEX ev_gr_entryid_index ON t_event_group_with_properties (entryid);
+
+
 select count(*) as num
 from t_event_group_with_properties;
 
@@ -132,23 +137,74 @@ from t_event_group_with_properties
 offset 500
 limit 30;
 
+/***
+ * Create a primary key for this table
+ */
+
+-- document id and entry id appear to be functionally linked
+
+-- To verify that each value in column entryid maps to exactly one value in column pageid 
+-- i.e., the pairs of values are functionally unique
+SELECT 
+    entryid,
+    COUNT(DISTINCT pageid ) AS distinct_pageid_count
+FROM t_event_group_with_properties
+GROUP BY entryid 
+HAVING COUNT(DISTINCT pageid) > 1;
+
+-- and the opposite
+SELECT 
+    pageid,
+    COUNT(DISTINCT entryid ) AS distinct_entryid_count
+FROM t_event_group_with_properties
+GROUP BY pageid 
+HAVING COUNT(DISTINCT entryid) > 1;
+
+
+select concat(entryid, '_', ev_gr_id) pk_t_event_group
+from t_event_group_with_properties  
+limit 10;
+
+
+-- add primary key
+alter table t_event_group_with_properties add column pk_t_event_group TEXT;
+update t_event_group_with_properties set pk_t_event_group = concat(entryid::text, '_', ev_gr_id);
+alter table t_event_group_with_properties add primary key (pk_t_event_group);
+
+
+
+
+
 
 /*
  * Explore data summarily
  * 
  */
 
+
+-- year
+select year, count(*) as number
+from t_event_group_with_properties
+group by year
+order by year;
+
+-- class
 select ev_gr_class, count(*) as number
 from t_event_group_with_properties
 group by ev_gr_class 
 order by number desc;
 
-select year, count(*) as number
-from v_event_group_with_properties
-group by year
-order by year;
+-- type : distinction between states and events
+select ev_gr_type, count(*) as number
+from t_event_group_with_properties
+group by ev_gr_type 
+order by number desc;
 
-
+-- class and type
+select ev_gr_class, ev_gr_type, count(*) as number
+from t_event_group_with_properties
+group by ev_gr_class, ev_gr_type
+order by ev_gr_class, ev_gr_type ;
 
 
 
@@ -196,7 +252,7 @@ order by dossierid, entryid, ev_gr_id ;
  * CREATE TABLE for events with id
  */
 
-drop view v_event_with_id;
+drop view t_event_with_id;
 
 drop table t_event_with_id;
 create table t_event_with_id as
@@ -264,21 +320,23 @@ substring(event_id FROM '-(.*)')::int event_own_id,
 ev_gr_id, event_id, ev_gr_length,
 event, year,dossierid,pageid,entryid
 from t_event_with_id
-limit 50)
+where dossierid = 'HGB_1_002_026'
+and ev_gr_length > 1
+limit 100)
 select
-	(xpath('role/@role', 
-role))[1]::text as role_role,
+	ev_gr_id, substring(event_id FROM '-(.*)')::int event_own_id,
 	(xpath('role/@ref', 
 role))[1]::text as role_ref,
+	(xpath('role/@role', 
+role))[1]::text as role_role,
 	(xpath('role/@text', 
 role))[1]::text as role_text,
 	role, 
 	event,
 	ev_gr_length,
-	ev_gr_id, substring(event_id FROM '-(.*)')::int event_own_id, 
 	event_id, year, entryid
 from tw1
-order by entryid, ev_gr_id ;
+order by entryid, ev_gr_id, event_own_id ;
 
 
 
@@ -297,20 +355,33 @@ ev_gr_id, event_id, ev_gr_length,
 event, year,dossierid,pageid,entryid
 from t_event_with_id)
 select
-	(xpath('role/@role', 
-role))[1]::text as role_role,
+	ev_gr_id, substring(event_id FROM '-(.*)')::int event_own_id,
 	(xpath('role/@ref', 
 role))[1]::text as role_ref,
+	(xpath('role/@role', 
+role))[1]::text as role_role,
 	(xpath('role/@text', 
 role))[1]::text as role_text,
 	role, 
 	event,
 	ev_gr_length,
-	ev_gr_id, substring(event_id FROM '-(.*)')::int event_own_id, 
 	event_id, year, entryid
 from tw1
-order by entryid, ev_gr_id ;
+order by entryid, ev_gr_id, event_own_id ;
 
+
+CREATE INDEX t_role_role_index ON t_role (role_role);
+CREATE INDEX t_role_entryid_index ON t_role (entryid);
+CREATE INDEX t_role_ev_gr_id_index ON t_role (ev_gr_id);
+
+
+
+-- add foreign key
+alter table t_role add column fk_t_event_group TEXT;
+update t_role set fk_t_event_group = concat(entryid, '_', ev_gr_id);
+CREATE INDEX idx_t_role_fk_t_event_group ON t_role (fk_t_event_group);
+ALTER TABLE t_role ADD CONSTRAINT fk_t_event_group 
+	FOREIGN KEY (fk_t_event_group) REFERENCES t_event_group_with_properties(pk_t_event_group);
 
 
 
@@ -319,7 +390,7 @@ order by entryid, ev_gr_id ;
 
 select *
 from t_role
-where ev_length > 3
+--where ev_length > 3
 order by entryid, ev_gr_id, event_id, role_ref
 limit 200;
 
@@ -345,36 +416,6 @@ limit 50;
 
 
 
-
-
-/*
- * 
- *  NOT NEEDED !!!
- * 
- * 
- * CREATE TABLE roles_with_events
- * 
- * When there are more data add a primary key and indexes on columns,
- * 
- * or test the performance of a temporary table
- * 
- */
-
-
--- create table
-drop table t_roles_with_events ;
-create table t_roles_with_events as
-select  row_number() OVER (ORDER BY 1)::INTEGER as pk_trwe,
-ev.ev_gr_id, ev.ev_gr_length, ev.event_id, evg.dossierid, evg.ev_gr_class, ev.year, 
-evg.event_group,
-rol.role_role, rol.role_text, rol.role_ref,
-evg.entryid
-from v_event_with_id ev, v_event_group_with_properties evg, v_role as rol
-where ev.entryid = evg.entryid
-and ev.ev_gr_id = evg.ev_gr_id
-and rol.entryid = evg.entryid
-and rol.event_id = ev.event_id
-and rol.ev_gr_id = ev.ev_gr_id;
 
 
 
@@ -422,4 +463,47 @@ tw1.role_role, tw1.role_number
 from tw2, tw1
 where tw1.ev_gr_class = tw2.ev_gr_class
 order by class_number desc, role_number desc;
+
+
+
+
+
+/*
+ * add a foreign key to spans
+ */
+
+
+
+select eg.event_group, tr.*, ts.*
+from t_role tr, t_spans ts, t_event_group_with_properties eg 
+where tr.entryid = '01ffb7e6-55d7-4743-9b25-da209a8da3d0_20250307'
+and eg.pk_t_event_group = tr.fk_t_event_group 
+and ts.span_id = tr.role_ref 
+and ts.entryid = tr.entryid 
+order by role_ref::integer ;
+
+
+
+
+
+-- add foreign key
+alter table t_role add column fk_t_span BIGINT;
+
+update t_role tr set fk_t_span = ts.pk_t_spans 
+from t_spans ts 
+where ts.entryid = tr.entryid
+and ts.span_id = tr.role_ref;
+
+
+CREATE INDEX idx_t_role_fk_t_span ON t_role (fk_t_span);
+ALTER TABLE t_role ADD CONSTRAINT t_role_fk_t_spans 
+	FOREIGN KEY (fk_t_span) REFERENCES t_spans(pk_t_spans);
+
+
+analyze public.t_role;
+vacuum public.t_role;
+
+
+
+
 
