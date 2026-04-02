@@ -26,21 +26,20 @@ order by year, span_id;
 -- with no parent, i.e. root span
 select *
 FROM t_spans ts 
-where ts.parent_span_id is null
+where ts.fk_parent_span = 0
 limit 10;
 
 
 -- number of root span
 select count(*)
 FROM t_spans ts 
-where ts.parent_span_id is null
-limit 10;
+where ts.fk_parent_span = 0;
 
 
 -- classes of root spans
 select span_class, count(*) as num_count
 FROM t_spans ts 
-where ts.parent_span_id is null
+where ts.fk_parent_span = 0
 group by span_class 
 order by num_count desc;
 

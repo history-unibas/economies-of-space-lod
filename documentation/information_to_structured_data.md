@@ -9,3 +9,10 @@ Linked Open Data (LOD) are structured data representing individuals identified b
 * The first step in this process is about extracting information in form of structured data from the semi-structured data available in the XML file.
 * The second one is about defining which entities are identifiable beyond their mention in the texts (addresses, buildings, occupations, etc.), to create them as instances of suitable classes (possibly in the SDHSS ontology ecosystem) and then to connect identified entities with their mentions in the text
 * The third step is about linking the identified entities to other data repositories on the semantic web
+
+
+## List of SQL documentation of the tables creation
+
+* [Creation of the tables relative to *spans*](../sql_queries_views/db_create_tables_spans.sql)
+
+* [Creation of the tables relative to *event groups* and *roles*](../sql_queries_views/db_create_tables_events.sql)

@@ -11,4 +11,8 @@
 ## Tables producion
 
 * [Spans tables](db_create_tables_spans.sql)
-% noto
+* [Events tables](db_create_tables_events.sql)
+
+
+
+
