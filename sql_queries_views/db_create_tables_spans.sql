@@ -183,8 +183,18 @@ and  ts.entryid = tw1.entryid;
 
 CREATE INDEX idx_t_spans_fk_parent_span ON t_spans (fk_parent_span);
 
--- you cannot add this contraint because many spans do not have a parent span
--- ALTER TABLE t_spans ADD CONSTRAINT fk_t_spans_parent_span 
+
+select * from 
+t_spans ts 
+where ts.fk_parent_span = 0
+limit 10;
+
+-- the fk_parent_span column must be NULL if no reference (and not 0) 
+-- in order to add this contraint because many spans do not have a parent span
+update t_spans ts set fk_parent_span = null
+where ts.fk_parent_span = 0;
+
+ALTER TABLE t_spans ADD CONSTRAINT fk_t_spans_parent_span 
 	FOREIGN KEY (fk_parent_span) REFERENCES t_spans(pk_t_spans);
 
 

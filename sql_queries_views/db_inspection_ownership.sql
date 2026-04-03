@@ -62,7 +62,7 @@ select tr.entryid, tr.role_role, tr.role_ref, tr.role_text,
 		ts.span_text, -- ts.span_class, 
 		pe.annotation_automated , tp.urlimage ,
 		sd.housename, sd.title, sd.link,
-		pd."locationshifted" , eg.dossierid, sd.descriptivenote ,
+		pd."locationshifted" , eg.dossierid, sd.descriptivenote,
 		ts.span_norm ,
 		eg.ev_gr_trigger_ref,
 		eg.event_group, tr."role", ts.span 

@@ -468,20 +468,26 @@ limit 200;
 
 
 
--- inspection with original data
+-- inspection with original data and persons
 with tw1 as
-(select  t1.span_text,ts.span_text stand_name, t1.min_year, t1.max_year, 
+(select t1.span_text,ts.span_text stand_name, t1.min_year, t1.max_year, 
 group_id, ts.pk_ow_mem_grpd grpd_id, unnest(t1.pk_spans) as pk_t_spans , t1.num   
-from  t_analyis_owners_members_first_level_similarity ts
-join t_analyis_owners_members_grdp t1 on t1.pk_ow_mem_grpd = ts.pk_ow_mem_grpd 
+from t_analyis_owners_members_first_level_similarity ts
+join t_analyis_owners_members_grdp t1 
+ 	on t1.pk_ow_mem_grpd = ts.pk_ow_mem_grpd 
 where group_id in (select ts.group_id
 from t_analyis_owners_members_first_level_similarity ts
 group by ts.group_id 
-having count(*) > 3)
+-- most frequent
+having count(*) > 2)
 offset 48
 limit 200)
--- group id is also person id
-select tw1.group_id, tom.role_text, tom.span_text, tom.year, tom.p_role, tw1.*
-from tw1, t_analyis_owners_members tom
-where tom.pk_t_spans = tw1.pk_t_spans 
-order by stand_name ;
+select tp.pk_person as pk_p, tw1.group_id as gr_id, tp."name", tom.span_text, tom.year, 
+	concat(tw1.min_year::text, '-', tw1.max_year::text), tom.role_text, tom.p_role, 
+	tw1.num grp_num, tw1.pk_t_spans --,tw1.*
+from t_person tp 
+join tw1 
+	on tp.group_id = tw1.group_id 
+join t_analyis_owners_members tom
+	on tom.pk_t_spans = tw1.pk_t_spans 
+order by tp.pk_person, year ;
