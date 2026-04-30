@@ -36,7 +36,26 @@ order by sd.dossierid
 limit 30;
 
 
+-- url image, xml
+select sd.dossierid, sd.serieid, sd.stabsid, tp.urlimage, sd.title  stbs_title, 
+	sd.housename, sd.oldhousenumber , sd.owner1862, 
+	pe.annotation_automated, sd.descriptivenote ,
+	pe."year" , pe."source" , pe."language", pe.entryid, pe.pageid,
+	pd."location" , pd.locationorigin, pd.locationaccuracy 
+from project_entry pe, project_dossier pd , stabs_dossier sd, transkribus_page tp 
+where pe.annotation_automated is not null 
+and pd.dossierid = sd.dossierid 
+and sd.dossierid = pe.dossierid 
+and tp.entryid = pe.entryid 
+and sd.dossierid = 'HGB_1_001_027'
+order by sd.dossierid
+limit 30;
 
+/* 
+ * interesting example
+ * HGB_1_001_027	HGB_1_001	HGB 1 1/27	https://files.transkribus.eu/Get?fileType=view&id=JNKJRJPSKBCTRXPLJGJGWNNK	Aeschengraben 20		Theil von 972		[XML]	mit Einschluss von Hirschgasse 17 seit [...]. Bis 1516, nachher siehe 20/24.	1424	Gerichtsarchiv	german	{47426337}	POINT (2611634.7500621113 1266658.8446067385)	manuell gesetzt	ungefähr gesetzt
+ * 
+ */
 
 /*
  * Distribution dans les temps

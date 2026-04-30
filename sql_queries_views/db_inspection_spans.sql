@@ -21,6 +21,10 @@ FROM t_spans ts
 where ts.dossierid = 'HGB_1_002_046'
 order by year, span_id;
 
+select *
+FROM t_spans ts 
+where ts.entryid = 'e6f83ab7-8c6b-4c4a-8fe9-f52439910278_20250307'
+order by span_id;
 
 
 
