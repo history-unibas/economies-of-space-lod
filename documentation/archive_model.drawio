@@ -1,0 +1,172 @@
+<mxfile host="65bd71144e">
+    <diagram id="OHkxYMk_NAbNQSSIsy0S" name="Page-1">
+        <mxGraphModel dx="1377" dy="1088" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="rico:isContainedByTransitive" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="19" target="17">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1165" y="851" as="sourcePoint"/>
+                        <mxPoint x="1270" y="851" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="owl:sameAs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="9" target="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1425" y="545" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="rico:includesTransitive" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="9" target="10">
+                    <mxGeometry x="0.0015" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <mxPoint x="1220" y="520" as="sourcePoint"/>
+                        <mxPoint x="980" y="545" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="rico:hasOrHadSubject" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="9" target="17">
+                    <mxGeometry x="0.0007" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <mxPoint x="1355" y="813.5" as="sourcePoint"/>
+                        <mxPoint x="1355" y="1040" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <object label="&lt;span style=&quot;font-weight: normal;&quot;&gt; URI State archive&lt;/span&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="6">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="1410" y="377" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="7" value="owl:sameAs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="10" target="8">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="975" y="550" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <object label="&lt;span style=&quot;font-weight: normal;&quot;&gt; URI State archive&lt;/span&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="8">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="1080" y="390" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <object label="rico Record Set&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;Stab-serie&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="9">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="1285" y="510" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <object label="rico Record Set&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;Stab-dossier&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="10">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="905" y="550" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="11" value="rico:hasOrHadSubject" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="10" target="19">
+                    <mxGeometry x="0.0007" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <mxPoint x="859.3299999999999" y="615" as="sourcePoint"/>
+                        <mxPoint x="859.3299999999999" y="1075" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="rico:hasOrHadAnalogueInstantiation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="14" target="16">
+                    <mxGeometry x="-0.0075" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <mxPoint x="490" y="660" as="sourcePoint"/>
+                        <mxPoint x="490" y="590" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="14" target="27">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <object label="rico Record&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;Stab-Page&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="14">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="630" y="630" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="15" value="rico:isOrWasDerived&lt;div&gt;FromInstantiation&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="16" target="20">
+                    <mxGeometry x="-0.0045" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <object label="rico Instanciation&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;Stab-Page&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="16">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="630" y="490" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <object label="rico Place&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;Street&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="17">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="1285" y="831" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="18" value="rico:geographicalCoordinates:" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="19" target="34">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <object label="rico Place&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;Address&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="19">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="905" y="831" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <object label="rico Instanciation&lt;div&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Photo&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="20">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="420" y="377" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="21" value="rico:includesTransitive" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="10" target="14">
+                    <mxGeometry x="0.0015" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <mxPoint x="1210" y="710" as="sourcePoint"/>
+                        <mxPoint x="970" y="750" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <object label="rico Instanciation&lt;div&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Project-Entry&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="22">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="390" y="831" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="23" value="rico:relationHasSource" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="25" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="rico:relationHasTarget" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="25" target="10">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="855" y="490"/>
+                            <mxPoint x="940" y="490"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <object label="rico Record Resource Genetic Relation" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="25">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="820" y="300" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="26" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;rico:hasOrHadDigitalInstantiation&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="27" target="22">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <object label="rico Record&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;Project-Entry&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="27">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="390" y="710" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="28" value="&lt;b&gt;&lt;font style=&quot;color: rgb(255, 51, 51);&quot;&gt;I&#39;m not sure what should be the Link here:&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;color: rgb(255, 51, 51);&quot;&gt;rico:isCopyOf ?&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="750" width="150" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="&lt;b&gt;Il s&#39;agit ici de l&#39;équivalent à Geographical Place. Comme on en a discuté, il d&#39;agit de la localisation de l&#39;objet mentionné dans l&#39;XML&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="905" y="910" width="185" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="&lt;b&gt;&lt;font style=&quot;color: rgb(255, 51, 51);&quot;&gt;Je ne suis pas sûr si l&#39;équivalence est avec le Stabs-serie/dossier ou project serie/dossier&lt;/font&gt;&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="360" y="140" width="185" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="&lt;b&gt;Il s&#39;agit ici de la relation de continuité entre les différents dossiers: de source (ancien) à target (nouveau)&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="819" y="200" width="185" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="&lt;b&gt;Il s&#39;agit ici du document archivistique physique, la feuille cartonnée&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="630" y="430" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="&lt;b&gt;Cette relation documente le fait que l&#39;adresse se trouve au sein d&#39;une rue&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1080" y="790" width="185" height="60" as="geometry"/>
+                </mxCell>
+                <object label="&lt;div&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;rdfs:Literal&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Geo-coordinates&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="34">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="700" y="930" width="140" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="35" value="&lt;b&gt;Ces relations transitives d&#39;appartenance indiquent que la Page se trouve dans le Dossier qui se trouve dans la Série&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1080" y="610" width="185" height="100" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
