@@ -26,7 +26,9 @@ limit 30;
 select ev_gr_class, count(*) as number
 from t_event_group_with_properties
 group by ev_gr_class 
-order by number desc;
+--order by number desc
+order by ev_gr_class
+;
 
 -- type : distinction between states and events
 select ev_gr_type, count(*) as number
@@ -35,6 +37,7 @@ group by ev_gr_type
 order by number desc;
 
 -- class and type
+-- clean up and create table ?
 select ev_gr_class, ev_gr_type, count(*) as number
 from t_event_group_with_properties
 group by ev_gr_class, ev_gr_type
@@ -131,5 +134,18 @@ order by tw3.num_count desc, tw2.role_class_num desc;
 
 
 select * 
-from v_class_role_number;
+from v_class_role_number
 where ev_gr_class = 'membership';
+
+
+select * 
+from v_class_role_number
+where role_role = 'date';
+
+
+
+
+select *
+from t_role tr 
+where tr.role_role = 'date'
+limit 10;

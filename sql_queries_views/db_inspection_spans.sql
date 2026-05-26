@@ -23,7 +23,8 @@ order by year, span_id;
 
 select *
 FROM t_spans ts 
-where ts.entryid = 'e6f83ab7-8c6b-4c4a-8fe9-f52439910278_20250307'
+--where ts.entryid = 'e6f83ab7-8c6b-4c4a-8fe9-f52439910278_20250307'
+where ts.entryid = '1a788909-9885-4bf2-9352-ac73fffabe4b_20250307'
 order by span_id;
 
 
@@ -40,14 +41,14 @@ order by span_id;
 -- with no parent, i.e. root span
 select *
 FROM t_spans ts 
-where ts.fk_parent_span = 0
+where ts.fk_parent_span is NULL
 limit 10;
 
 
 -- number of root span : 896319
 select count(*)
 FROM t_spans ts 
-where ts.fk_parent_span = 0;
+where ts.fk_parent_span is NULL;
 
 
 
@@ -70,7 +71,12 @@ select count(*)
 FROM t_spans ts 
 where  ts.span_element = 'reference';
 
-
+-- reference and not root spans
+select *
+FROM t_spans ts 
+where  ts.span_element = 'reference'
+and ts.fk_parent_span IS not null
+limit 10;
 
 -- number of root and non root reference spans:
 -- no-root	351299

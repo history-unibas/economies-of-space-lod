@@ -1,0 +1,128 @@
+Index,Tabelle,Attribut,Attribut löschen?,Attribut Bezeichnung neu,Bemerkung,Beispiel,Status
+1,StABS_Serie,serieId,,,,,
+2,StABS_Serie,stabsId,,,,,
+3,StABS_Serie,title,,,,,
+4,StABS_Serie,link,,linkRecord,,,
+5,StABS_Dossier,dossierId,,,,,
+6,StABS_Dossier,serieId,,,,,
+7,StABS_Dossier,stabsId,,,,,
+8,StABS_Dossier,title,,,,,
+9,StABS_Dossier,link,,linkRecord,Description: URI of the linked open data record,https://ld.bs.ch/ais/Record/1506012,in Bearbeitung
+10,StABS_Dossier,,,linkInstantiation,"Data type: VARCHAR(60)
+not NULL: yes
+Additional Requirement: 
+Description: URI of the linked open data instantiation
+Basis: https://s.zazuko.com/3feyuP6",https://ld.bs.ch/ais/Instantiation/1506012-fr01,in Bearbeitung
+11,StABS_Dossier,,,linkManifest,"Data type: VARCHAR(80)
+not NULL: yes
+Additional Requirement: 
+Description: URL of the linked open data manifest
+Basis: https://s.zazuko.com/3feyuP6",https://dls.staatsarchiv.bs.ch/api/records/manifest/?identifier=2958009,in Bearbeitung
+12,StABS_Dossier,,,linkViewer,"Data type: VARCHAR(70)
+not NULL: yes
+Additional Requirement: 
+Description: URL of the State Archives viewer
+Basis: https://s.zazuko.com/3feyuP6",https://dls.staatsarchiv.bs.ch/records/1506012/2958009/preview,in Bearbeitung
+13,StABS_Dossier,houseName,,,,,
+14,StABS_Dossier,oldHousenumber,,,,,
+15,StABS_Dossier,owner1862,,,,,
+16,StABS_Dossier,descriptiveNote,,,,,
+17,StABS_Page,,,,"Neue Tabelle, ein Feature in dieser Tabelle entspricht einer Seite im HGB",,
+18,StABS_Page,,,pageId,"Data type: VARCHAR(20)
+not NULL: yes
+Additional Requirement: PRIMARY KEY
+Description: Project identifier, composed of dossierId and pageNr according to the following scheme: [dossierId]_{int([pageNr]):03}",,in Bearbeitung
+19,StABS_Page,,,dossierId,"Data type: VARCHAR(15)
+not NULL: yes
+Additional Requirement:  FOREIGN KEY
+Description: Project identifier of the linked dossier",,in Bearbeitung
+20,StABS_Page,,,pageNr,"Data type: SMALLINT
+not NULL: yes
+Additional Requirement: 
+Description: Page number of the page in the dossier
+Basis: Manifest, Canvas, label","1
+
+(https://dls.staatsarchiv.bs.ch/api/records/manifest/?identifier=2958009)",in Bearbeitung
+21,StABS_Page,,,canvasId,"Data type: VARCHAR(50)
+not NULL: yes
+Additional Requirement: UNIQUE
+Description: Canvas Identifier (UUID)
+Basis: Manifest, Canvas, id
+
+Problem: ID ist nicht stabil. Vorerst nicht übernehmen?","urn:uuid:fb1bac1218184983aba56895472e11ca
+
+(https://dls.staatsarchiv.bs.ch/api/records/manifest/?identifier=2958009)",
+22,StABS_Page,,,linkViewer,"Data type: VARCHAR(100)
+not NULL: yes
+Additional Requirement: 
+Description: URL of the State Archives viewer
+Basis: [StABS_Dossier.linkViewer]?viewer_page=[pageNr]","https://dls.staatsarchiv.bs.ch/records/1506012/2958009/preview?viewer_page=1
+
+(https://dls.staatsarchiv.bs.ch/api/records/manifest/?identifier=2958009)",in Bearbeitung
+23,StABS_Klingental_Regest,link,ja,,gesamte Tabelle entfernen,,in Bearbeitung
+24,StABS_Klingental_Regest,identifier,ja,,gesamte Tabelle entfernen,,in Bearbeitung
+25,StABS_Klingental_Regest,title,ja,,gesamte Tabelle entfernen,,in Bearbeitung
+26,StABS_Klingental_Regest,descriptiveNote,ja,,gesamte Tabelle entfernen,,in Bearbeitung
+27,StABS_Klingental_Regest,expressedDate,ja,,gesamte Tabelle entfernen,,in Bearbeitung
+28,Project_Dossier,dossierId,,,,,
+29,Project_Dossier,locationAccuracy,,locationUncorrectedAccuracy,,,
+30,Project_Dossier,locationOrigin,,locationUncorrectedOrigin,,,
+31,Project_Dossier,location,,locationUncorrected,,,
+32,Project_Dossier,locationShifted,,location,,,
+33,Project_Dossier,locationShiftedOrigin,,locationOrigin,,,
+34,Project_Dossier,clusterId,ja,,,,
+35,Project_Dossier,addressMatchingType,ja,,,,
+36,Project_Dossier,specialType,,,,,
+37,Project_Entry,entryId,,,,,
+38,Project_Entry,dossierId,,,,,
+39,Project_Entry,pageId,,,,,
+40,Project_Entry,year,,,,,
+41,Project_Entry,yearSource,,,,,
+42,Project_Entry,comment,,,,,
+43,Project_Entry,manuallyCorrected,,,,,
+44,Project_Entry,language,,,,,
+45,Project_Entry,source,,,,,
+46,Project_Entry,sourceOrigin,,,,,
+47,Project_Entry,keyLatestTranscript,,,,,
+48,Project_Entry,annotationManual,,,,,
+49,Project_Entry,annotationAutomated,,,,,
+50,Project_Period,dossierId,,,,,
+51,Project_Period,yearFrom,,,,,
+52,Project_Period,yearTo,,,,,
+53,Project_Period,yearFromManuallyCorrected,,,,,
+54,Project_Period,yearToManuallyCorrected,,,,,
+55,Project_Relationship,sourceDossierId,,,,,
+56,Project_Relationship,targetDossierId,,,,,
+57,Transkribus_Collection,colId,,,,,
+58,Transkribus_Collection,colName,,,,,
+59,Transkribus_Collection,nrOfDocuments,,,,,
+60,Transkribus_Document,docId,,,,,
+61,Transkribus_Document,colId,,,,,
+62,Transkribus_Document,title,,,,,
+63,Transkribus_Document,nrOfPages,,,,,
+64,Transkribus_Page,pageId,,,,,
+65,Transkribus_Page,key,,,,,
+66,Transkribus_Page,docId,,,,,
+67,Transkribus_Page,pageNr,,,,,
+68,Transkribus_Page,urlImage,,,,,
+69,Transkribus_Page,entryId,,,,,
+70,Transkribus_Transcript,key,,,,,
+71,Transkribus_Transcript,tsId,,,,,
+72,Transkribus_Transcript,pageId,,,,,
+73,Transkribus_Transcript,parentTsId,,,,,
+74,Transkribus_Transcript,urlPageXml,ja,,,,umgesetzt
+75,Transkribus_Transcript,,,pageXML,"Data type: xml
+not NULL: yes
+Additional Requirement: 
+Description: Page xml of the transcription",,umgesetzt
+76,Transkribus_Transcript,status,,,,,
+77,Transkribus_Transcript,timestamp,,,,,
+78,Transkribus_Transcript,htrModel,,,,,
+79,Transkribus_TextRegion,textRegionId,,,,,
+80,Transkribus_TextRegion,key,,,,,
+81,Transkribus_TextRegion,index,,,,,
+82,Transkribus_TextRegion,type,,,,,
+83,Transkribus_TextRegion,textLine,,,,,
+84,Transkribus_TextRegion,text,,,,,
+85,geo_address,[mehrere Attribute],,,Datengrundlage für geografischen Standort,,
+86,transcript_date_geom,[mehrere Attribute],ja,,gesamte Tabelle löschen (wurde für Analysen benutzt),,

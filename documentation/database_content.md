@@ -152,7 +152,7 @@ IN reality this is the place where you find the encoded XML document, therefore 
 
 ### transkribus_page
 
-* in meinsetn Fällen ein Eintrag (project-entry) pro Registerkarte
+* in den meisten Fällen ein Eintrag (project-entry) pro Registerkarte
 * eintrag : einleitungs datum, paragraph, credit, footer (types von **transkribus region**)
 * manchmal ein Eintrag über mehrere seiten = bilder (transkribus pages)
 * sehr selten : eine seite / kard : mehrer einträge (nicht berücksichtigt, nicht in der Datenbankstruktur)
