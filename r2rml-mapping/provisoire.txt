@@ -1,0 +1,33 @@
+    rr:predicateObjectMap [
+        rr:predicate sdh-slc:P23;
+        rr:objectMap [ rr:template "https://swiss-elites.lod4hss.cloud/resource/gen{fk_gender}" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sdh-short:P2;
+        rr:objectMap [ rr:column "birth_year" ;
+                rr:dataType xsd:integer];
+    ]
+
+
+
+<#chunk_type_1> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "elites_suisses.gender" ];
+    rr:subjectMap [
+        # rr:constant swel: ; does not work,
+        # keep the full URI for the template
+        rr:template "https://swiss-elites.lod4hss.cloud/resource/gen{pk_gender}";
+        rr:termType rr:IRI;
+        rr:class sdh-info:C25;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sdh-short:P9;
+        rr:objectMap [ rr:column "name" ];
+    ];
+       rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [ 
+            rr:column "wikidata_uri";
+            rr:termType rr:IRI 
+        ];
+    ].
+

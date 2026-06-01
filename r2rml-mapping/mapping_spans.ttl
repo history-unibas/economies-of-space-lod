@@ -1,0 +1,39 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix eso: <http://elites_suisses/ontology/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sdh-short: <https://sdhss.org/ontology/shortcuts/>.
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/>.
+@prefix eosb: <https://eos-basel.lod4hss.cloud/resource/i>.
+@prefix sdh-slc: <https://sdhss.org/ontology/social-life-core/>.
+@prefix sdh-info: <https://sdhss.org/ontology/sources-information-metadata/>.
+
+<#chunk_1> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "t_spans" ];
+    rr:subjectMap [
+        rr:template "https://eos-basel.lod4hss.cloud/resource/i{span_uri}";
+        rr:termType rr:IRI;
+        rr:class sdh-info:C16;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sdh-info:P35;
+        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/i{fk_chunk_type}" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate crm:P190;
+        rr:objectMap [ rr:column "span_text" ];
+    ].
+
+<#chunk_type_1> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "t_chunk_type" ];
+    rr:subjectMap [
+        # rr:constant swel: ; does not work,
+        # keep the full URI for the template
+        rr:template "https://eos-basel.lod4hss.cloud/resource/i{chunk_type_uri}";
+        rr:termType rr:IRI;
+        rr:class sdh-info:C25;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sdh-short:P9;
+        rr:objectMap [ rr:column "label" ];
+    ].

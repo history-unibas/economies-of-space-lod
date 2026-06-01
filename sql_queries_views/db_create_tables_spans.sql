@@ -146,6 +146,9 @@ CREATE INDEX t_spans_class_index ON t_spans (span_class);
 CREATE INDEX t_spans_norm_index ON t_spans (span_norm);
 CREATE INDEX t_spans_span_text_idx ON t_spans (span_text);
 CREATE INDEX t_spans_entryid_idx ON t_spans (entryid);
+CREATE INDEX t_spans_span_element ON t_spans (span_element);
+
+
 
 -- One can add two indexes on table
 --CREATE INDEX USING GIN for trigrams
@@ -283,6 +286,109 @@ from t_spans ts
 	join geo_address ga on ga.signatur = sd.stabsid 
 where ts.span_class = 'buyer'
 order by span_text ;
+
+
+
+
+/*
+ * Span types
+ */
+
+select concat('chkt_',(ROW_NUMBER() OVER ()::BIGINT)::text) AS chunk_type_uri,
+span_element, '    ' as label, count(*) as num_count, '   ' as notes
+FROM t_spans ts 
+group by span_element 
+order by num_count desc;
+
+drop table t_chunk_type;
+create table t_chunk_type AS
+select concat('chkt_',(ROW_NUMBER() OVER ()::BIGINT)::text) AS chunk_type_uri,
+span_element, '    ' as label, count(*) as num_count, '   ' as notes
+FROM t_spans ts 
+group by span_element ;
+
+
+select *
+from t_chunk_type;
+
+
+--update t_chunk_type set label=span_element;
+
+
+
+
+select *
+from t_spans 
+limit 10;
+
+alter table t_spans add column fk_chunk_type text;
+
+select tct.*, ts.*
+from t_chunk_type tct, t_spans ts
+where ts.span_element = tct.span_element 
+limit 10;
+
+
+
+update t_spans ts set fk_chunk_type=tct.chunk_type_uri 
+from t_chunk_type tct
+where ts.span_element = tct.span_element;
+
+CREATE INDEX t_spans_fk_chunk_type ON t_spans (fk_chunk_type);
+
+select fk_chunk_type, count(*) as num_count
+FROM t_spans ts 
+group by fk_chunk_type 
+order by num_count desc;
+
+
+
+
+
+/*
+ * Span class references
+ */
+
+
+-- CLASSES of REFERENCE spans
+select ROW_NUMBER() OVER ()::BIGINT AS pk_referenced_objects_classes,
+span_class, count(*) as num_count
+FROM t_spans ts 
+where ts.span_element = 'reference'
+and length(span_class) > 2
+group by span_class 
+order by num_count desc;
+
+
+
+-- classes or types of objects the spans refer to
+select concat('roc_',(ROW_NUMBER() OVER ()::BIGINT)::text) AS referenced_objects_class_uri,
+span_class, '    ' as label, count(*) as num_count, '   ' as notes
+FROM t_spans ts 
+where length(span_class) > 1
+group by span_class 
+order by span_class ;
+order by num_count DESC;
+
+drop table t_referenced_objects_class;
+create table t_referenced_objects_class AS
+select concat('roc_',(ROW_NUMBER() OVER ()::BIGINT)::text) AS referenced_objects_class_uri,
+span_class, '    ' as label, count(*) as num_count, '   ' as notes
+FROM t_spans ts 
+where length(span_class) > 1
+group by span_class ;
+
+ALTER table t_referenced_objects_class add primary key (referenced_objects_class_uri);
+
+
+
+
+
+
+
+
+
+
 
 
 /*
