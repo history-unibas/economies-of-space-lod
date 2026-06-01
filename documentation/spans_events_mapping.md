@@ -14,5 +14,5 @@
 
 ### Mapping of attributes
 
-* @text is mapped to the primitive value  crm:E62 String associated with the property crm:P190 has symbolic content
+* @text is mapped to the primitive value  *crm:E62 String* associated with the property *crm:P190 has symbolic content*
 
