@@ -17,7 +17,7 @@
     ];
     rr:predicateObjectMap [
         rr:predicate sdh-info:P35;
-        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/i{fk_chunk_type}" ];
+        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/{fk_chunk_type}" ];
     ];
     rr:predicateObjectMap [
         rr:predicate crm:P190;
@@ -29,7 +29,7 @@
     rr:subjectMap [
         # rr:constant swel: ; does not work,
         # keep the full URI for the template
-        rr:template "https://eos-basel.lod4hss.cloud/resource/i{chunk_type_uri}";
+        rr:template "https://eos-basel.lod4hss.cloud/resource/{chunk_type_uri}";
         rr:termType rr:IRI;
         rr:class sdh-info:C25;
     ];
