@@ -5,11 +5,15 @@
  * 
  */
 
+select *
+from project_entry pe
+limit 10;
+
 
 -- inspect project entry
 select *
 from project_entry pe
-where pe.annotation_automated is not null
+where pe.annotationautomated is not null
 limit 10;
 
 
@@ -21,39 +25,40 @@ limit 10;
 
 -- first level span
 select unnest(xpath('//spans/span', 
-pe.annotation_automated)) as span,
+pe.annotationautomated)) as span,
 year, dossierid, 
 --pageid, 
 entryid
 from project_entry pe 
 where pe.dossierid = 'HGB_1_002_026' 
-AND pe.annotation_automated is not null
+AND pe.annotationautomated is not null
 order by year;
 
 
 -- all levels spans
 select unnest(xpath('//span', 
-pe.annotation_automated)) as span,
+pe.annotationautomated)) as span,
 year, dossierid, 
 --pageid, 
 entryid
 from project_entry pe 
 where pe.dossierid = 'HGB_1_002_026' 
-AND pe.annotation_automated is not null
+AND pe.annotationautomated is not null
 order by dossierid, year, entryid;
 
 
 -- add the span id
 with tw1 as (
 select unnest(xpath('//span', 
-pe.annotation_automated)) as span,
+pe.annotationautomated)) as span,
 year, dossierid, 
 --pageid, 
 -- the entryid is the main identifier of a text
 entryid
 from project_entry pe 
-where pe.dossierid = 'HGB_1_002_026' 
-AND pe.annotation_automated is not null
+--where pe.dossierid = 'HGB_1_002_026' 
+where pe.entryid = '37685ccb-3ae4-4c72-9248-b31c0311bf16_20260528'
+AND pe.annotationautomated is not null
 )
 select dossierid, entryid, year, span, 
 -- there are strings in the @id, 
@@ -64,18 +69,23 @@ from tw1
 order by dossierid, year, entryid, span_id;	
 
 
+
+/*
+ * Create the span table
+ */
+
 -- extract all relevant attributes from all levels spans
 -- and prepare CREATE TABLE query
 with tw1 as (
 select unnest(xpath('//span', 
-pe.annotation_automated)) as span,
+pe.annotationautomated)) as span,
 year, dossierid, 
 pageid, 
 entryid
 from project_entry pe 
 --where pe.dossierid = 'HGB_1_002_026' 
-where entryid='bfe0d71e-df8d-448d-89ad-f208e760865e_20250307'
-AND pe.annotation_automated is not null
+where entryid='37685ccb-3ae4-4c72-9248-b31c0311bf16_20260528'
+AND pe.annotationautomated is not null
 )
 select ROW_NUMBER() OVER ()::BIGINT AS pk_t_spans,
 concat(entryid, '_span', (xpath('/span/@id', 
@@ -107,15 +117,16 @@ drop table t_spans CASCADE	;
 create table t_spans as
 with tw1 as (
 select unnest(xpath('//span', 
-pe.annotation_automated)) as span,
+pe.annotationautomated)) as span,
 year, dossierid, 
 pageid, 
 entryid
 from project_entry pe 
-where pe.annotation_automated is not null
+where pe.annotationautomated is not null
 )
 select 
  	--ROW_NUMBER() OVER ()::BIGINT AS pk_t_spans,
+	-- the span uri is a concatenation between the entryid and the span_id
  	concat(entryid, '_span', (xpath('/span/@id', 
 	span))[1]::text) as span_uri, 
  	year, 
@@ -150,7 +161,7 @@ CREATE INDEX t_spans_span_element ON t_spans (span_element);
 
 
 
--- One can add two indexes on table
+-- One can add two indexes on table columns
 --CREATE INDEX USING GIN for trigrams
 
 
@@ -159,13 +170,13 @@ vacuum public.t_spans;
 
 select * 
 from t_spans
---where entryid = 'bfe0d71e-df8d-448d-89ad-f208e760865e_20250307'
-where entryid = '1a788909-9885-4bf2-9352-ac73fffabe4b_20250307'
+where entryid = '37685ccb-3ae4-4c72-9248-b31c0311bf16_20260528'
 order by span_id;
 limit 200;
 
 
--- 28 May 2028: 2'569'255
+-- 28 May 2026: 2'569'255
+-- 17 June 2026: 2'584'370
 select count(*) as number
 from t_spans;
 
@@ -181,14 +192,16 @@ select *
 from t_spans ts 
 limit 10;
 
-
+-- we create a column for the foreign key relation to the parent span
+-- this value is a concatenation between the entryid and the span_id
 alter table t_spans add column parent_span_uri text;
 
 
 -- children with parents
-select span_uri as parent_span_uri, span, unnest(children)::text::integer as child_id, span_id as parent_id, ts.dossierid, ts.entryid 
+select span_uri as parent_span_uri, span, span_id as parent_id, 
+unnest(children)::text as child_id, ts.dossierid, ts.entryid 
 from t_spans ts 
-where ts.entryid = 'cc9e5200-8464-4de6-bca8-a65ea29ea72d_20250307'
+where ts.entryid = '37685ccb-3ae4-4c72-9248-b31c0311bf16_20260528'
 order by parent_id, child_id
 limit 20;
 
@@ -230,9 +243,7 @@ ALTER TABLE t_spans ADD CONSTRAINT fk_t_spans_parent_span_uri
 
 select *
 from t_spans ts 
---where ts.entryid='bfe0d71e-df8d-448d-89ad-f208e760865e_20250307'
-where ts.entryid='1a788909-9885-4bf2-9352-ac73fffabe4b_20250307'
---where ts.entryid = 'cc9e5200-8464-4de6-bca8-a65ea29ea72d_20250307'
+where ts.entryid= '37685ccb-3ae4-4c72-9248-b31c0311bf16_20260528'
 --order by parent_id, child_id
 limit 200;
 
@@ -255,6 +266,7 @@ select count(*)
 from t_spans ts ;
 
 -- 28 May 2026 : 694961
+-- 18 June 2026 : 703'623
 select count(*)
 from t_spans ts 
 where ts.span_element = 'reference';
@@ -275,8 +287,9 @@ order by number desc;
 
 select *
 from t_spans ts 
-where ts.span_class = 'buyer'
-order by span_text ;
+where ts.span_class = 'owner'
+order by span_text 
+limit 10;
 
 
 select ga.adresse, ga.eigent1862, ga.hausname, ts.*
@@ -284,18 +297,22 @@ from t_spans ts
 	join project_dossier pd on pd.dossierid = ts.dossierid 
 	join stabs_dossier sd on sd.dossierid = pd.dossierid 
 	join geo_address ga on ga.signatur = sd.stabsid 
-where ts.span_class = 'buyer'
-order by span_text ;
+where ts.span_class = 'owner'
+order by span_text 
+limit 10;
 
 
 
 
 /*
  * Span types
+ * 
+ * A label and notes are added if manual modification is wished
+ * 
  */
 
 select concat('chkt_',(ROW_NUMBER() OVER ()::BIGINT)::text) AS chunk_type_uri,
-span_element, '    ' as label, count(*) as num_count, '   ' as notes
+span_element, span_element as label, count(*) as num_count, '   ' as notes
 FROM t_spans ts 
 group by span_element 
 order by num_count desc;
@@ -303,7 +320,7 @@ order by num_count desc;
 drop table t_chunk_type;
 create table t_chunk_type AS
 select concat('chkt_',(ROW_NUMBER() OVER ()::BIGINT)::text) AS chunk_type_uri,
-span_element, '    ' as label, count(*) as num_count, '   ' as notes
+span_element, span_element as label, count(*) as num_count, '   ' as notes
 FROM t_spans ts 
 group by span_element ;
 
@@ -336,6 +353,7 @@ where ts.span_element = tct.span_element;
 
 CREATE INDEX t_spans_fk_chunk_type ON t_spans (fk_chunk_type);
 
+-- test if every span has a fk_chunk_type
 select fk_chunk_type, count(*) as num_count
 FROM t_spans ts 
 group by fk_chunk_type 
@@ -363,7 +381,7 @@ order by num_count desc;
 
 -- classes or types of objects the spans refer to
 select concat('roc_',(ROW_NUMBER() OVER ()::BIGINT)::text) AS referenced_objects_class_uri,
-span_class, '    ' as label, count(*) as num_count, '   ' as notes
+span_class, span_class as label, count(*) as num_count, '   ' as notes
 FROM t_spans ts 
 where length(span_class) > 1
 group by span_class 
@@ -372,8 +390,8 @@ order by num_count DESC;
 
 drop table t_referenced_objects_class;
 create table t_referenced_objects_class AS
-select concat('roc_',(ROW_NUMBER() OVER ()::BIGINT)::text) AS referenced_objects_class_uri,
-span_class, '    ' as label, count(*) as num_count, '   ' as notes
+select concat('roc_',(ROW_NUMBER() OVER ()::BIGINT)::text) AS 	,
+span_class, span_class as label, count(*) as num_count, '   ' as notes
 FROM t_spans ts 
 where length(span_class) > 1
 group by span_class ;
@@ -381,6 +399,33 @@ group by span_class ;
 ALTER table t_referenced_objects_class add primary key (referenced_objects_class_uri);
 
 
+
+-- inspect
+select * 
+from t_referenced_objects_class;
+
+
+
+alter table t_spans add column fk_referenced_objects_class text;
+
+select troc.*, ts.fk_referenced_objects_class, ts.*
+from t_referenced_objects_class troc, t_spans ts
+where ts.span_class = troc.span_class
+limit 10;
+
+
+
+update t_spans ts set fk_referenced_objects_class=troc.referenced_objects_class_uri 
+from t_referenced_objects_class troc
+where ts.span_class = troc.span_class;
+
+CREATE INDEX t_spans_fk_referenced_objects_class ON t_spans (fk_referenced_objects_class);
+
+-- test if every span has a fk_referenced_objects_class
+select fk_referenced_objects_class, count(*) as num_count
+FROM t_spans ts 
+group by fk_referenced_objects_class 
+order by num_count desc;
 
 
 
@@ -397,8 +442,7 @@ ALTER table t_referenced_objects_class add primary key (referenced_objects_class
 
 select * 
 from t_spans
---where entryid = 'bfe0d71e-df8d-448d-89ad-f208e760865e_20250307'
-where entryid = '1a788909-9885-4bf2-9352-ac73fffabe4b_20250307'
+where entryid = '37685ccb-3ae4-4c72-9248-b31c0311bf16_20260528'
 order by span_id;
 limit 200;
 
@@ -407,31 +451,31 @@ limit 200;
 
 -- tokens
 select (unnest(xpath('//text/token/text()', 
-pe.annotation_automated)))::text as token,
+pe.annotationautomated)))::text as token,
 (unnest(xpath('//text/token/@token_id', 
-pe.annotation_automated)))::text::integer as token_id,
+pe.annotationautomated)))::text::integer as token_id,
 year, dossierid, 
 --pageid, 
 entryid
 from project_entry pe 
 where pe.dossierid = 'HGB_1_002_026' 
-AND pe.annotation_automated is not null
+AND pe.annotationautomated is not null
 order by year
 
 
 with tw1 as (
 -- tokens
 select (unnest(xpath('//text/token/text()', 
-pe.annotation_automated)))::text as token,
+pe.annotationautomated)))::text as token,
 (unnest(xpath('//text/token/@token_id', 
-pe.annotation_automated)))::text::integer as token_id,
+pe.annotationautomated)))::text::integer as token_id,
 --year, dossierid, 
 --pageid, 
 entryid
 from project_entry pe 
 --where pe.dossierid = 'HGB_1_002_026' 
 where entryid = '1a788909-9885-4bf2-9352-ac73fffabe4b_20250307'
-AND pe.annotation_automated is not null
+AND pe.annotationautomated is not null
 )
 select concat(entryid, '_tok', token_id::text) token_uri, token token_text, token_id, entryid
 from tw1;
@@ -442,12 +486,12 @@ from tw1;
 create table t_token as
 with tw1 as (
 select (unnest(xpath('//text/token/text()', 
-pe.annotation_automated)))::text as token,
+pe.annotationautomated)))::text as token,
 (unnest(xpath('//text/token/@token_id', 
-pe.annotation_automated)))::text::integer as token_id,
+pe.annotationautomated)))::text::integer as token_id,
 entryid
 from project_entry pe 
-where pe.annotation_automated is not null
+where pe.annotationautomated is not null
 )
 select concat(entryid, '_tok', token_id::text) token_uri, token token_text, token_id, entryid
 from tw1;

@@ -1,0 +1,8 @@
+[
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "select (count(*) as ?num) \nwhere {\n\ngraph <https://lod4hss.org/economies-of-space/graphs/data>\n{?s ?p ?o}\n\n}\n",
+    "metadata": {}
+  }
+]

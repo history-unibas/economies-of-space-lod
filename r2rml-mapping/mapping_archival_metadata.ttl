@@ -8,12 +8,12 @@
 @prefix sdh-slc: <https://sdhss.org/ontology/social-life-core/>.
 @prefix sdh-info: <https://sdhss.org/ontology/sources-information-metadata/>.
 
-<#chunk_1> a rr:TriplesMap;
-    rr:logicalTable [ rr:tableName "t_spans" ];
+<#project_entry_1> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "project_entry" ];
     rr:subjectMap [
-        rr:template "https://eos-basel.lod4hss.cloud/resource/i{span_uri}";
+        rr:template "https://eos-basel.lod4hss.cloud/resource/pe{entryid}";
         rr:termType rr:IRI;
-        rr:class sdh-info:C16;
+        rr:class crm:E33;
     ];
     rr:predicateObjectMap [
         ## has chunk type

@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="OHkxYMk_NAbNQSSIsy0S" name="Page-1">
-        <mxGraphModel dx="965" dy="855" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="822" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -20,7 +20,7 @@
                         <mxGeometry x="655" y="1180" width="170" height="70" as="geometry"/>
                     </mxCell>
                 </object>
-                <object label="rico Instanciation&lt;div&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Project-Entry&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="22">
+                <object label="&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;crmE33 Linguistic Object&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Project-Entry&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="22">
                     <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" parent="1" vertex="1">
                         <mxGeometry x="270" y="850" width="140" height="70" as="geometry"/>
                     </mxCell>
@@ -130,7 +130,7 @@
                         <mxPoint x="930" y="925" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <object label="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;sdh-info:C16 Research Concept&lt;/span&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;attribute:element&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="57">
+                <object label="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;sdh-info:C20 Research Concept&lt;/span&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;attribute:element&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="57">
                     <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" parent="1" vertex="1">
                         <mxGeometry x="1020" y="1320" width="180" height="70" as="geometry"/>
                     </mxCell>
@@ -169,9 +169,6 @@
                         <mxPoint x="315" y="930" as="targetPoint"/>
                         <mxPoint as="offset"/>
                     </mxGeometry>
-                </mxCell>
-                <mxCell id="65" value="&lt;b&gt;&lt;font style=&quot;color: rgb(255, 51, 51);&quot;&gt;crm:E Linguistic object ?&lt;/font&gt;&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="440" y="860.5" width="150" height="49" as="geometry"/>
                 </mxCell>
                 <mxCell id="66" value="sdh-info:P7 is asserted by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.325;entryY=0.026;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="42" target="19" edge="1">
                     <mxGeometry relative="1" as="geometry">
