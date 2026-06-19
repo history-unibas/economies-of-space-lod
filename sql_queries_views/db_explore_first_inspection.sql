@@ -104,3 +104,11 @@ from project_entry pe ;
 select *
 from v_dossier_id_page_id
 limit 10;
+
+
+
+
+select pe."language", count(*) as num
+from project_entry pe
+group by pe."language" 
+order by num desc;

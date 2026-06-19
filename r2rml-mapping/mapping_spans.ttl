@@ -11,6 +11,7 @@
 <#chunk_1> a rr:TriplesMap;
     rr:logicalTable [ rr:tableName "t_spans" ];
     rr:subjectMap [
+        ### URI ??? i ???
         rr:template "https://eos-basel.lod4hss.cloud/resource/i{span_uri}";
         rr:termType rr:IRI;
         rr:class sdh-info:C16;

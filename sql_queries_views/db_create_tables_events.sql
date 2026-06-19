@@ -1,19 +1,19 @@
 
 /*
  * 
- * New column 'annotation_automated' without array, just XML value
+ * New column 'annotationautomated' without array, just XML value
  *  
  */
 
 -- event groups XML
 
 select unnest(xpath('//eventGroup', 
-pe.annotation_automated)) as event_group,
+pe.annotationautomated)) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
---where pe.entryid = 'd7cb61aa-3215-49e3-b802-80a4540f35d6_20250307'
-where pe.dossierid = 'HGB_1_002_026' 
-AND pe.annotation_automated is not null;
+where pe.entryid = '37685ccb-3ae4-4c72-9248-b31c0311bf16_20260528'
+--where pe.dossierid = 'HGB_1_002_026' 
+AND pe.annotationautomated is not null;
 
 
 /*
@@ -25,11 +25,11 @@ AND pe.annotation_automated is not null;
 
 with tw1 as (
 select unnest(xpath('//eventGroup', 
-pe.annotation_automated)) as event_group,
+pe.annotationautomated)) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
 where --pe.entryid = 'd7cb61aa-3215-49e3-b802-80a4540f35d6_20250307'
---where pe.annotation_automated is not null
+--where pe.annotationautomated is not null
 --and 
 pe.dossierid = 'HGB_1_002_026'
 )
@@ -50,22 +50,26 @@ order by dossierid, entryid, ev_gr_id
 
 with tw1 as (
 select unnest(xpath('//eventGroup', 
-pe.annotation_automated)) as event_group,
+pe.annotationautomated)) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
-where pe.annotation_automated is not null
+where pe.annotationautomated is not null
 and -- pe.entryid = 'd7cb61aa-3215-49e3-b802-80a4540f35d6_20250307'
 pe.dossierid = 'HGB_1_002_026'
 )
 select 
 	(xpath('eventGroup/@class', 
 event_group))[1]::text ev_gr_class,
-(xpath('eventGroup/@type', 
+	(xpath('eventGroup/@type', 
 event_group))[1]::text ev_gr_type,
 	(xpath('eventGroup/@event_id', 
 event_group))[1]::text::integer ev_gr_id,
-(xpath('eventGroup/@ref', 
+	(xpath('eventGroup/@ref', 
 event_group))[1]::text ev_gr_ref,
+	(xpath('eventGroup/@start', 
+event_group))[1]::text ev_gr_start,
+	(xpath('eventGroup/@end', 
+event_group))[1]::text ev_gr_end,
 /*	
  * (xpath('eventGroup/@polarity', 
 event_group))[1]::text ev_gr_polarity,
@@ -96,10 +100,10 @@ from tw1;
 create table t_event_group_with_properties AS
 with tw1 as (
 select unnest(xpath('//eventGroup', 
-pe.annotation_automated)) as event_group,
+pe.annotationautomated)) as event_group,
 year, dossierid, pageid, entryid
 from project_entry pe 
-where pe.annotation_automated is not null
+where pe.annotationautomated is not null
 )
 select 
 	(xpath('eventGroup/@class', 
@@ -107,9 +111,13 @@ event_group))[1]::text ev_gr_class,
 (xpath('eventGroup/@type', 
 event_group))[1]::text ev_gr_type,
 	(xpath('eventGroup/@event_id', 
-event_group))[1]::text::integer ev_gr_id,
-(xpath('eventGroup/@ref', 
+event_group))[1]::text ev_gr_id,
+	(xpath('eventGroup/@ref', 
 event_group))[1]::text ev_gr_ref,
+	(xpath('eventGroup/@start', 
+event_group))[1]::text ev_gr_start,
+	(xpath('eventGroup/@end', 
+event_group))[1]::text ev_gr_end,
 -- 'résuppose que le trigger soit unique par eventGroup'
 	(xpath('eventGroup/trigger/@text', 
 event_group))[1]::text ev_gr_trigger_text,
@@ -137,38 +145,19 @@ from t_event_group_with_properties
 offset 500
 limit 30;
 
-/***
+
+/*
  * Create a primary key for this table
  */
 
--- document id and entry id appear to be functionally linked
-
--- To verify that each value in column entryid maps to exactly one value in column pageid 
--- i.e., the pairs of values are functionally unique
-SELECT 
-    entryid,
-    COUNT(DISTINCT pageid ) AS distinct_pageid_count
-FROM t_event_group_with_properties
-GROUP BY entryid 
-HAVING COUNT(DISTINCT pageid) > 1;
-
--- and the opposite
-SELECT 
-    pageid,
-    COUNT(DISTINCT entryid ) AS distinct_entryid_count
-FROM t_event_group_with_properties
-GROUP BY pageid 
-HAVING COUNT(DISTINCT entryid) > 1;
-
-
-select concat(entryid, '_', ev_gr_id) pk_t_event_group
+select concat(entryid, '_evgr', ev_gr_id) pk_t_event_group
 from t_event_group_with_properties  
 limit 10;
 
 
 -- add primary key
 alter table t_event_group_with_properties add column pk_t_event_group TEXT;
-update t_event_group_with_properties set pk_t_event_group = concat(entryid::text, '_', ev_gr_id);
+update t_event_group_with_properties set pk_t_event_group = concat(entryid::text, '_evgr', ev_gr_id);
 alter table t_event_group_with_properties add primary key (pk_t_event_group);
 
 
@@ -209,6 +198,55 @@ order by ev_gr_class, ev_gr_type ;
 
 
 
+
+/*
+ * Add event group classes
+ */
+
+select ROW_NUMBER() OVER ()::BIGINT AS pk_event_group_class,
+ev_gr_class, count(*) as num
+from t_event_group_with_properties
+group by ev_gr_class 
+order by num desc;
+
+drop table t_event_group_class ;
+create table t_event_group_class as 
+select ROW_NUMBER() OVER ()::BIGINT AS pk_event_group_class,
+ev_gr_class, count(*) as num
+from t_event_group_with_properties
+group by ev_gr_class;
+
+ALTER table t_event_group_class add primary key (pk_event_group_class);
+
+select * 
+from t_event_group_class;
+
+
+
+alter table t_event_group_with_properties add column fk_event_group_class integer;
+
+
+select t1.*, t2.ev_gr_class, t2.*
+from t_event_group_class t1, t_event_group_with_properties t2
+where t1.ev_gr_class= t2.ev_gr_class
+limit 10;
+
+update  t_event_group_with_properties t2
+	set fk_event_group_class = t1.pk_event_group_class
+from t_event_group_class t1
+where t1.ev_gr_class= t2.ev_gr_class;
+
+
+CREATE INDEX t_pk_event_group_class_fk_event_group_class 
+ON t_event_group_with_properties (fk_referenced_objects_class);
+
+
+
+
+
+
+
+
 /*
  * Produce events table
  */
@@ -234,12 +272,14 @@ from t_event_group_with_properties
 where dossierid = 'HGB_1_002_026'
 limit 20)
 select
+	concat(entryid, '_ev', replace((xpath('event/@event_id', 
+event))[1]::text, '.', '-')) event_uri,
 	replace((xpath('event/@event_id', 
 event))[1]::text, '.', '-') as event_id,
+concat(entryid::text, '_evgr', ev_gr_id) as fk_event_group,
 	event, 
 	array_length(xpath('//event', 
 event_group),1) as ev_gr_length,
-	--event_group, 
 	ev_gr_id, year, dossierid, pageid, entryid
 from tw1
 order by dossierid, entryid, ev_gr_id ;
@@ -252,8 +292,6 @@ order by dossierid, entryid, ev_gr_id ;
  * CREATE TABLE for events with id
  */
 
-drop view t_event_with_id;
-
 drop table t_event_with_id;
 create table t_event_with_id as
 with tw1 as (
@@ -264,8 +302,11 @@ event_group)) as event,
 from t_event_group_with_properties
 )
 select
+	concat(entryid, '_ev', replace((xpath('event/@event_id', 
+event))[1]::text, '.', '-')) event_uri,
 	replace((xpath('event/@event_id', 
 event))[1]::text, '.', '-') as event_id,
+concat(entryid::text, '_evgr', ev_gr_id) as fk_event_group,
 	event, 
 	array_length(xpath('//event', 
 event_group),1) as ev_gr_length,
@@ -274,6 +315,8 @@ event_group),1) as ev_gr_length,
 from tw1
 order by dossierid, entryid, ev_gr_id ;
 
+
+ALTER table t_event_with_id add primary key (event_uri);
 
 
 -- inspect
@@ -285,16 +328,23 @@ limit 50;
 
 -- test join with event group
 
-select ev.ev_gr_id, substring(event_id FROM '-(.*)')::integer event_own_id,
+select ev.fk_event_group, ev.ev_gr_id, ev.event_uri,
+ substring(event_id FROM '-(.*)')::integer event_own_id,
 		ev.event_id, ev_gr_length, evg.ev_gr_class, ev.year, ev.event, evg.event_group, evg.entryid
 from t_event_with_id ev, t_event_group_with_properties evg
 where ev_gr_length > 1  
-and ev.entryid = evg.entryid
-and ev.ev_gr_id = evg.ev_gr_id
+and ev.fk_event_group = evg.pk_t_event_group
 limit 50;
 
 
+-- add foreign key
+ALTER TABLE t_event_with_id ADD CONSTRAINT fk_t_event_group_with_properties
+	FOREIGN KEY (fk_event_group) REFERENCES t_event_group_with_properties(pk_t_event_group);
 
+
+select *
+from t_event_with_id tewi 
+limit 10;
 
 
 /*
@@ -314,7 +364,7 @@ limit 50;
 
 -- roles with properties
 with tw1 as (
-select unnest(xpath('//role', 
+select event_uri, unnest(xpath('//role', 
 event)) as role, 
 substring(event_id FROM '-(.*)')::int event_own_id, 
 ev_gr_id, event_id, ev_gr_length,
@@ -324,7 +374,8 @@ where dossierid = 'HGB_1_002_026'
 and ev_gr_length > 1
 limit 100)
 select
-	ev_gr_id, substring(event_id FROM '-(.*)')::int event_own_id,
+	event_uri,
+	ev_gr_id, concat(event_uri, '_role',(ROW_NUMBER() OVER ()::BIGINT)::text) AS role_uri,
 	(xpath('role/@ref', 
 role))[1]::text as role_ref,
 	(xpath('role/@role', 
@@ -348,14 +399,18 @@ order by entryid, ev_gr_id, event_own_id ;
 drop table t_role;
 create table t_role as
 with tw1 as (
-select unnest(xpath('//role', 
+select event_uri, unnest(xpath('//role', 
 event)) as role, 
 substring(event_id FROM '-(.*)')::int event_own_id, 
 ev_gr_id, event_id, ev_gr_length,
 event, year,dossierid,pageid,entryid
 from t_event_with_id)
 select
-	ev_gr_id, substring(event_id FROM '-(.*)')::int event_own_id,
+	event_uri,
+	ev_gr_id, concat(event_uri, '_role',(ROW_NUMBER() OVER ()::BIGINT)::text) AS role_uri,
+	substring(event_id FROM '-(.*)')::int event_own_id,
+	concat(entryid, '_span', (xpath('role/@ref', 
+role))[1]::text) as fk_span_uri, 
 	(xpath('role/@ref', 
 role))[1]::text as role_ref,
 	(xpath('role/@role', 
@@ -370,32 +425,43 @@ from tw1
 order by entryid, ev_gr_id, event_own_id ;
 
 
+ALTER table t_role add primary key (role_uri);
+
+
 CREATE INDEX t_role_role_index ON t_role (role_role);
 CREATE INDEX t_role_entryid_index ON t_role (entryid);
 CREATE INDEX t_role_ev_gr_id_index ON t_role (ev_gr_id);
 
-
-
 -- add foreign key
-alter table t_role add column fk_t_event_group TEXT;
-update t_role set fk_t_event_group = concat(entryid, '_', ev_gr_id);
-CREATE INDEX idx_t_role_fk_t_event_group ON t_role (fk_t_event_group);
-ALTER TABLE t_role ADD CONSTRAINT fk_t_event_group 
-	FOREIGN KEY (fk_t_event_group) REFERENCES t_event_group_with_properties(pk_t_event_group);
+ALTER TABLE t_role ADD CONSTRAINT fk_t_event_with_id
+	FOREIGN KEY (event_uri) REFERENCES t_event_with_id(event_uri);
 
 
+CREATE INDEX idx_t_role_fk_t_span ON t_role (fk_span_uri);
 
+-- not possible error in data
+-- fk_span_uri)=(ffb930a1-b9d8-487a-9005-9911b0f9af4d_20260528_spanE_work_stattgraben)
+ALTER TABLE t_role ADD CONSTRAINT t_role_fk_t_spans 
+	FOREIGN KEY (fk_span_uri) REFERENCES t_spans(span_uri);
 
 -- inspect
 
 select *
 from t_role
 --where ev_length > 3
-order by entryid, ev_gr_id, event_id, role_ref
+--order by entryid, ev_gr_id, event_id, role_ref
+offset 2000
 limit 200;
 
 
 
+
+
+
+
+/*
+ *   Partie précédente--- élimiter ? 
+ */
 
 -- test join with event group, event and role
 
@@ -463,6 +529,8 @@ tw1.role_role, tw1.role_number
 from tw2, tw1
 where tw1.ev_gr_class = tw2.ev_gr_class
 order by class_number desc, role_number desc;
+
+
 
 
 
