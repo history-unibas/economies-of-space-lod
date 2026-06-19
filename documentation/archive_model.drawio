@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="OHkxYMk_NAbNQSSIsy0S" name="Page-1">
-        <mxGraphModel dx="974" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="413" dy="489" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -166,14 +166,14 @@
                 <mxCell id="35" value="&lt;b&gt;Ces relations transitives d&#39;appartenance indiquent que la Page se trouve dans le Dossier qui se trouve dans la Série&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="1080" y="610" width="185" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="36" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;crm:P190 has symbolic content&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="37">
+                <mxCell id="36" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;crm:P190 has symbolic content&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="22" target="37" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="470" y="790" as="sourcePoint"/>
                         <mxPoint x="470" y="841" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <object label="crm:E62 String" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="37">
-                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" parent="1" vertex="1">
                         <mxGeometry x="510" y="970" width="140" height="70" as="geometry"/>
                     </mxCell>
                 </object>
