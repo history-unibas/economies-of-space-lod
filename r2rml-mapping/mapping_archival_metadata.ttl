@@ -11,7 +11,7 @@
 <#project_entry_1> a rr:TriplesMap;
     rr:logicalTable [ rr:tableName "v_project_entry" ];
     rr:subjectMap [
-        rr:template "https://eos-basel.lod4hss.cloud/resource/pe{entryid}";
+        rr:template "https://ld.bs.ch/hgb/resource/pe{entryid}";
         rr:termType rr:IRI;
         ## Linguistic Object
         rr:class crm:E33;
@@ -34,7 +34,7 @@
     rr:predicateObjectMap [
         ## referring to things of type
         rr:predicate rico:isConstituentOfTransitive;
-        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/prd_{dossierid}" ];
+        rr:objectMap [ rr:template "https://ld.bs.ch/hgb/resource/prd_{dossierid}" ];
     ];
     rr:predicateObjectMap [
         rr:predicate crm:P190;
@@ -47,7 +47,7 @@
     rr:subjectMap [
         # rr:constant swel: ; does not work,
         # keep the full URI for the template
-        rr:template "https://eos-basel.lod4hss.cloud/resource/prd_{dossierid}";
+        rr:template "https://ld.bs.ch/hgb/resource/prd_{dossierid}";
         rr:termType rr:IRI;
         ##Research concept
         rr:class rico:RecordSet;
@@ -55,7 +55,7 @@
     rr:predicateObjectMap [
         ## referring to things of type
         rr:predicate rico:isOrWasInstantiationOf;
-        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/stad_{dossierid}" ];
+        rr:objectMap [ rr:template "https://ld.bs.ch/hgb/resource/stad_{dossierid}" ];
     ];
     rr:predicateObjectMap [
         ## referring to things of type
@@ -74,7 +74,7 @@
     rr:subjectMap [
         # rr:constant swel: ; does not work,
         # keep the full URI for the template
-        rr:template "https://eos-basel.lod4hss.cloud/resource/stad_{dossierid}";
+        rr:template "https://ld.bs.ch/hgb/resource/stad_{dossierid}";
         rr:termType rr:IRI;
         ##Research concept
         rr:class rico:RecordSet;
