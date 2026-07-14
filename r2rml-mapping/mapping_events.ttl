@@ -11,7 +11,7 @@
 <#t_event_group_with_properties_1> a rr:TriplesMap;
     rr:logicalTable [ rr:tableName "t_event_group_with_properties" ];
     rr:subjectMap [
-        rr:template "https://eos-basel.lod4hss.cloud/resource/evg_{pk_t_event_group}";
+        rr:template "https://ld.bs.ch/hgb/resource/evg_{pk_t_event_group}";
         rr:termType rr:IRI;
         ## Propositional Object
         rr:class sdh-info:C23;
@@ -34,7 +34,7 @@
     rr:predicateObjectMap [
         ## referring to things of type
         rr:predicate eos:hasEventGroupClass;
-        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/evgrcl_{fk_event_group_class}" ];
+        rr:objectMap [ rr:template "https://ld.bs.ch/hgb/resource/evgrcl_{fk_event_group_class}" ];
     ];
     rr:predicateObjectMap [
         ## has chunk type
@@ -44,7 +44,7 @@
     rr:predicateObjectMap [
         ## referring to things of type
         rr:predicate eos:hasEventGroupTriggerChunk;
-        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/i{entryid}_span{ev_gr_trigger_ref}" ];
+        rr:objectMap [ rr:template "https://ld.bs.ch/hgb/resource/i{entryid}_span{ev_gr_trigger_ref}" ];
     ];
     rr:predicateObjectMap [
         rr:predicate eos:hasEventGroupTriggerText;
@@ -59,7 +59,7 @@
 <#t_event_group_class_1> a rr:TriplesMap;
     rr:logicalTable [ rr:tableName "t_event_group_class" ];
     rr:subjectMap [
-        rr:template "https://eos-basel.lod4hss.cloud/resource/evgrcl_{pk_event_group_class}";
+        rr:template "https://ld.bs.ch/hgb/resource/evgrcl_{pk_event_group_class}";
         rr:termType rr:IRI;
         ## Propositional Object
         rr:class eos:factoidClass;
@@ -80,7 +80,7 @@
 <#t_event_with_id_1> a rr:TriplesMap;
     rr:logicalTable [ rr:tableName "t_event_with_id" ];
     rr:subjectMap [
-        rr:template "https://eos-basel.lod4hss.cloud/resource/ev_{event_uri}";
+        rr:template "https://ld.bs.ch/hgb/resource/ev_{event_uri}";
         rr:termType rr:IRI;
         ## Propositional Object
         rr:class sdh-info:C23;
@@ -93,7 +93,7 @@
     rr:predicateObjectMap [
         ## referring to things of type
         rr:predicate eos:isPartOfEventGroup;
-        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/evg_{fk_event_group}" ];
+        rr:objectMap [ rr:template "https://ld.bs.ch/hgb/resource/evg_{fk_event_group}" ];
     ]
     .
 
@@ -102,7 +102,7 @@
 <#t_role_1> a rr:TriplesMap;
     rr:logicalTable [ rr:tableName "t_role" ];
     rr:subjectMap [
-        rr:template "https://eos-basel.lod4hss.cloud/resource/evr_{role_uri}";
+        rr:template "https://ld.bs.ch/hgb/resource/evr_{role_uri}";
         rr:termType rr:IRI;
         ## Propositional Object
         rr:class eos:eventRole;
@@ -120,11 +120,11 @@
     rr:predicateObjectMap [
         ## referring to things of type
         rr:predicate eos:isPartOfEvent;
-        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/ev_{event_uri}" ];
+        rr:objectMap [ rr:template "https://ld.bs.ch/hgb/resource/ev_{event_uri}" ];
     ];
     rr:predicateObjectMap [
         ## referring to things of type
         rr:predicate eos:refersToChunk;
-        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/i{fk_span_uri}" ];
+        rr:objectMap [ rr:template "https://ld.bs.ch/hgb/resource/i{fk_span_uri}" ];
     ]
     .
