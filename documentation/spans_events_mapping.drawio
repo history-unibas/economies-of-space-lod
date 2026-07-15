@@ -1,16 +1,16 @@
 <mxfile host="65bd71144e">
     <diagram id="OHkxYMk_NAbNQSSIsy0S" name="Page-1">
-        <mxGraphModel dx="413" dy="489" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+        <mxGraphModel dx="1724" dy="1058" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;crm:P106 is composed of&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="19" target="19" edge="1">
+                <mxCell id="2" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;crm:P106 is composed of&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="19" target="19" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="850" y="1320" as="sourcePoint"/>
                         <mxPoint x="765" y="1355" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="18" value="crm:P106 is composed of" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="19" target="22" edge="1">
+                <mxCell id="18" value="crm:P106 is composed of" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="19" target="22" edge="1">
                     <mxGeometry x="-0.1456" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -61,9 +61,9 @@
                         <mxGeometry x="30" y="1060" width="140" height="70" as="geometry"/>
                     </mxCell>
                 </object>
-                <object label="Fa&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;ctoid&lt;/span&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="41">
+                <object label="&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(0, 0, 0);&quot;&gt;sdh-info:C23 Factoid&lt;/span&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;eventGroup; event&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="41">
                     <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" parent="1" vertex="1">
-                        <mxGeometry x="1270" y="590" width="140" height="70" as="geometry"/>
+                        <mxGeometry x="1270" y="590" width="190" height="70" as="geometry"/>
                     </mxCell>
                 </object>
                 <object label="Asserted Thing&#39;s Involvement" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="42">
@@ -81,24 +81,14 @@
                         <mxGeometry x="1540" y="410" width="140" height="70" as="geometry"/>
                     </mxCell>
                 </object>
-                <object label="Asserted Actor&#39;s&lt;div&gt;Role&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="45">
+                <object label="Asserted Role" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="45">
                     <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" parent="1" vertex="1">
-                        <mxGeometry x="880" y="870" width="140" height="70" as="geometry"/>
+                        <mxGeometry x="670" y="600" width="140" height="70" as="geometry"/>
                     </mxCell>
                 </object>
-                <object label="&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Asserted Actor&#39;s&lt;/span&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;Role&amp;nbsp;&lt;/span&gt;Type&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="46">
+                <object label="&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Asserted&lt;/span&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;Role&amp;nbsp;&lt;/span&gt;Class&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="46">
                     <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" parent="1" vertex="1">
-                        <mxGeometry x="1010" y="961" width="170" height="70" as="geometry"/>
-                    </mxCell>
-                </object>
-                <object label="Propositional&lt;div&gt;Datation&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="47">
-                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" parent="1" vertex="1">
-                        <mxGeometry x="710" y="690" width="140" height="70" as="geometry"/>
-                    </mxCell>
-                </object>
-                <object label="...&lt;br&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;Type&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="48">
-                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" parent="1" vertex="1">
-                        <mxGeometry x="890" y="400" width="140" height="70" as="geometry"/>
+                        <mxGeometry x="810" y="800" width="170" height="70" as="geometry"/>
                     </mxCell>
                 </object>
                 <object label="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;sdh-info:C25&amp;nbsp;&lt;/span&gt;Chunk Type&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;attribute:element&lt;/span&gt;&lt;/div&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="50">
@@ -106,16 +96,17 @@
                         <mxGeometry x="950" y="1199.94" width="160" height="70" as="geometry"/>
                     </mxCell>
                 </object>
-                <mxCell id="51" value="sdh-info:P35 has chunk type" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="19" target="50" edge="1">
+                <mxCell id="51" value="sdh-info:P35 has chunk type" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="19" target="50" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="860" y="1081.21" as="sourcePoint"/>
                         <mxPoint x="950" y="1018.21" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="53" value="crm:P148 has component&amp;nbsp;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="41" target="45" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="1160" y="849.4300000000001" as="sourcePoint"/>
-                        <mxPoint x="1250" y="786.4300000000001" as="targetPoint"/>
+                <mxCell id="53" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;sdh-info:??? is part of&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="45" target="41" edge="1">
+                    <mxGeometry x="0.0017" relative="1" as="geometry">
+                        <mxPoint x="1250" y="786.4300000000001" as="sourcePoint"/>
+                        <mxPoint x="1160" y="849.4300000000001" as="targetPoint"/>
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="54" value="crm:P190 has symbolic content" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="37" target="34" edge="1">
@@ -124,7 +115,7 @@
                         <mxPoint x="849" y="950" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="55" value="crm:P190 has symbolic content" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" parent="1" source="19" target="34" edge="1">
+                <mxCell id="55" value="crm:P190 has symbolic content" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" source="19" target="34" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="720" y="1170" as="sourcePoint"/>
                         <mxPoint x="930" y="925" as="targetPoint"/>
@@ -146,10 +137,9 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="62" value="sdh-info:P7 is asserted by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="45" target="19" edge="1">
-                    <mxGeometry x="-0.6089" relative="1" as="geometry">
+                    <mxGeometry relative="1" as="geometry">
                         <mxPoint x="680" y="1245" as="sourcePoint"/>
                         <mxPoint x="350" y="930" as="targetPoint"/>
-                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="63" value="crm:P148 has component&amp;nbsp;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="1" source="41" target="41" edge="1">
@@ -157,20 +147,20 @@
                         <mxPoint x="1250" y="735" as="sourcePoint"/>
                         <mxPoint x="1030" y="915" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="1460" y="625"/>
-                            <mxPoint x="1460" y="710"/>
-                            <mxPoint x="1375" y="710"/>
+                            <mxPoint x="1520" y="625"/>
+                            <mxPoint x="1520" y="710"/>
+                            <mxPoint x="1412" y="710"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="64" value="crm:P106 is composed of" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;startArrow=classicThin;startFill=1;endArrow=none;endFill=0;" parent="1" source="37" target="19" edge="1">
+                <mxCell id="64" value="crm:P106 is composed of" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;startArrow=classicThin;startFill=1;endArrow=none;endFill=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="37" target="19" edge="1">
                     <mxGeometry x="-0.1456" relative="1" as="geometry">
                         <mxPoint x="250" y="1420" as="sourcePoint"/>
-                        <mxPoint x="315" y="930" as="targetPoint"/>
+                        <mxPoint x="650" y="1240" as="targetPoint"/>
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="66" value="sdh-info:P7 is asserted by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.325;entryY=0.026;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="42" target="19" edge="1">
+                <mxCell id="66" value="sdh-info:P7 is asserted by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="42" target="19" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="890" y="915" as="sourcePoint"/>
                         <mxPoint x="713" y="1190" as="targetPoint"/>
@@ -182,20 +172,53 @@
                         <mxPoint x="1030" y="915" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="68" value="crm:P148 has component&amp;nbsp;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="41" target="47" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="1260" y="745" as="sourcePoint"/>
-                        <mxPoint x="1040" y="925" as="targetPoint"/>
+                <object label="&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Factoid&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;Class&lt;/span&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="69">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="1040" y="810" width="170" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="70" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;sdh-info:??? has asserted role class&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.582;entryY=-0.029;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="45" target="46">
+                    <mxGeometry x="0.0017" relative="1" as="geometry">
+                        <mxPoint x="750" y="610" as="sourcePoint"/>
+                        <mxPoint x="1280" y="635" as="targetPoint"/>
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="69" value="sdh-info:P7 is asserted by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.13;entryY=-0.004;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="47" target="19" edge="1">
-                    <mxGeometry x="-0.6089" relative="1" as="geometry">
-                        <mxPoint x="890" y="915" as="sourcePoint"/>
-                        <mxPoint x="708" y="1190" as="targetPoint"/>
+                <mxCell id="71" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;sdh-info:??? has factoid class&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="41" target="69">
+                    <mxGeometry x="0.0017" relative="1" as="geometry">
+                        <mxPoint x="820" y="645" as="sourcePoint"/>
+                        <mxPoint x="919" y="808" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="72" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;sdh-info:??? is related to&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="46" target="69">
+                    <mxGeometry x="0.0017" relative="1" as="geometry">
+                        <mxPoint x="830" y="655" as="sourcePoint"/>
+                        <mxPoint x="929" y="818" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <object label="&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Factoid&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;&#39;s&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;Class&lt;/span&gt;" URI="https://example.org/instance_uri" linkTarget="_blank" en="Instance" fr="Instance" id="73">
+                    <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                        <mxGeometry x="1400" y="961" width="170" height="70" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="74" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;sdh-info:??? has factoid type&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="44" source="41">
+                    <mxGeometry x="0.0017" relative="1" as="geometry">
+                        <mxPoint x="1630" y="794" as="sourcePoint"/>
+                        <mxPoint x="1539" y="455" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="75" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;sdh-info:??? has trigger&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="41" target="19">
+                    <mxGeometry x="0.0017" relative="1" as="geometry">
+                        <mxPoint x="1375" y="600" as="sourcePoint"/>
+                        <mxPoint x="580" y="1140" as="targetPoint"/>
                         <mxPoint as="offset"/>
                         <Array as="points">
-                            <mxPoint x="780" y="840"/>
-                            <mxPoint x="677" y="840"/>
+                            <mxPoint x="1318" y="570"/>
+                            <mxPoint x="550" y="570"/>
+                            <mxPoint x="550" y="1198"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>

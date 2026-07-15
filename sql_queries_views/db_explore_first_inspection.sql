@@ -23,6 +23,17 @@ where pe.annotation_automated is not null
 order by dossierid, pageid 
 limit 30;
 
+
+-- 
+select sd.linkrecord 
+from stabs_dossier sd 
+group by sd.linkrecord 
+having count(*) > 1;
+
+
+
+
+
 -- associate metadata (address, etc.)
 select sd.dossierid, sd.serieid, sd.stabsid, sd.title, 
 	sd.housename, sd.oldhousenumber , sd.owner1862, sd.descriptivenote ,

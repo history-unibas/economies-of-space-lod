@@ -1,0 +1,113 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix eos: <https://eos.lod4hss.org/ontology#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sdh-short: <https://sdhss.org/ontology/shortcuts/>.
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/>.
+@prefix rico: <https://www.ica.org/standards/RiC/ontology#>.
+@prefix sdh-slc: <https://sdhss.org/ontology/social-life-core/>.
+@prefix sdh-info: <https://sdhss.org/ontology/sources-information-metadata/>.
+
+<#project_entry_1> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "v_project_entry" ];
+    rr:subjectMap [
+        rr:template "https://eos-basel.lod4hss.cloud/resource/pe{entryid}";
+        rr:termType rr:IRI;
+        ## Linguistic Object
+        rr:class crm:E33;
+    ];
+    rr:predicateObjectMap [
+        ## has chunk type
+        rr:predicate rico:Date;
+        rr:objectMap [ rr:column "year" ];
+    ];
+    rr:predicateObjectMap [
+        ## has chunk type
+        rr:predicate eos:hasLanguage;
+        rr:objectMap [ rr:column "language" ];
+    ];
+    rr:predicateObjectMap [
+        ## has chunk type
+        rr:predicate eos:hasSource;
+        rr:objectMap [ rr:column "source" ];
+    ];
+    rr:predicateObjectMap [
+        ## referring to things of type
+        rr:predicate rico:isConstituentOfTransitive;
+        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/prd_{dossierid}" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate crm:P190;
+        rr:objectMap [ rr:column "entry_text" ];
+    ].
+
+
+<#project_dossier_1> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "project_dossier" ];
+    rr:subjectMap [
+        # rr:constant swel: ; does not work,
+        # keep the full URI for the template
+        rr:template "https://eos-basel.lod4hss.cloud/resource/prd_{dossierid}";
+        rr:termType rr:IRI;
+        ##Research concept
+        rr:class rico:RecordSet;
+    ];
+    rr:predicateObjectMap [
+        ## referring to things of type
+        rr:predicate rico:isOrWasInstantiationOf;
+        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/stad_{dossierid}" ];
+    ];
+    rr:predicateObjectMap [
+        ## referring to things of type
+        rr:predicate eos:fromTable;
+        rr:object "project_dossier";
+    ];
+    rr:predicateObjectMap [
+        rr:predicate eos:hasLocation;
+        rr:objectMap [ rr:column "geolocation" ];
+    ].
+
+
+
+<#stabs_dossier_1> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "stabs_dossier" ];
+    rr:subjectMap [
+        # rr:constant swel: ; does not work,
+        # keep the full URI for the template
+        rr:template "https://eos-basel.lod4hss.cloud/resource/stad_{dossierid}";
+        rr:termType rr:IRI;
+        ##Research concept
+        rr:class rico:RecordSet;
+    ];
+    rr:predicateObjectMap [
+        ## referring to things of type
+        rr:predicate eos:hasLinkRecord;
+        rr:objectMap [ 
+            rr:column "linkrecord" ;
+            rr:termType rr:IRI];
+    ];
+    rr:predicateObjectMap [
+        ## referring to things of type
+        rr:predicate eos:hasLinkViewer;
+        rr:objectMap [ 
+            rr:column "linkviewer";
+            rr:termType rr:IRI
+         ];
+    ];
+    rr:predicateObjectMap [
+        ## referring to things of type
+        rr:predicate eos:fromTable;
+        rr:object "stabs_dossier";
+    ];
+    rr:predicateObjectMap [
+        rr:predicate eos:hasHouseName;
+        rr:objectMap [ rr:column "housename" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate eos:hasOwner1862;
+        rr:objectMap [ rr:column "owner1862" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate eos:hasTitle;
+        rr:objectMap [ rr:column "title" ];
+    ].

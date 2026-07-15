@@ -1,0 +1,32 @@
+[
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "Reference to person --> trigger --> reference zu Gebäude",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "PREFIX eos: <https://eos.lod4hss.org/ontology#>\nselect ?class ?classLabel (count(*) as ?n)\nwhere {?s eos:hasEventGroupClass ?class.\n?class eos:hasLabel ?classLabel}\ngroup by ?class ?classLabel\norder by desc(?n)",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "PREFIX eos: <https://eos.lod4hss.org/ontology#>\nPREFIX sdh-info: <https://sdhss.org/ontology/sources-information-metadata/>\nPREFIX sdh-short: <https://sdhss.org/ontology/shortcuts/>\n\nselect ?thingType ?thingTypeLabel (count(*) as ?n)\nwhere {\n    ### referring to thing of type\n    ?s sdh-info:P34 ?thingType.\n    ?thingType sdh-short:P9 ?thingTypeLabel}\ngroup by ?thingType ?thingTypeLabel\norder by desc(?n)",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>\nPREFIX eos: <https://eos.lod4hss.org/ontology#>\n\nSELECT *\n WHERE {\n    ?pd a rico:RecordSet;\n       eos:hasLocation ?location\n\n    \n}\nLIMIT 10",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "",
+    "metadata": {}
+  }
+]

@@ -1,0 +1,62 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix eso: <http://elites_suisses/ontology/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sdh-short: <https://sdhss.org/ontology/shortcuts/>.
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/>.
+@prefix eosb: <https://eos-basel.lod4hss.cloud/resource/i>.
+@prefix sdh-slc: <https://sdhss.org/ontology/social-life-core/>.
+@prefix sdh-info: <https://sdhss.org/ontology/sources-information-metadata/>.
+
+<#chunk_1> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "t_spans" ];
+    rr:subjectMap [
+        ### URI ??? i ???
+        rr:template "https://eos-basel.lod4hss.cloud/resource/i{span_uri}";
+        rr:termType rr:IRI;
+        rr:class sdh-info:C16;
+    ];
+    rr:predicateObjectMap [
+        ## has chunk type
+        rr:predicate sdh-info:P35;
+        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/{fk_chunk_type}" ];
+    ];
+    rr:predicateObjectMap [
+        ## referring to things of type
+        rr:predicate sdh-info:P34;
+        rr:objectMap [ rr:template "https://eos-basel.lod4hss.cloud/resource/{fk_referenced_objects_class}" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate crm:P190;
+        rr:objectMap [ rr:column "span_text" ];
+    ].
+
+<#chunk_type_1> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "t_chunk_type" ];
+    rr:subjectMap [
+        # rr:constant swel: ; does not work,
+        # keep the full URI for the template
+        rr:template "https://eos-basel.lod4hss.cloud/resource/{chunk_type_uri}";
+        rr:termType rr:IRI;
+        rr:class sdh-info:C25;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sdh-short:P9;
+        rr:objectMap [ rr:column "label" ];
+    ].
+
+
+<#referenced_objects_class_1> a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "t_referenced_objects_class" ];
+    rr:subjectMap [
+        # rr:constant swel: ; does not work,
+        # keep the full URI for the template
+        rr:template "https://eos-basel.lod4hss.cloud/resource/{referenced_objects_class_uri}";
+        rr:termType rr:IRI;
+        ##Research concept
+        rr:class sdh-info:C20;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate sdh-short:P9;
+        rr:objectMap [ rr:column "label" ];
+    ].
