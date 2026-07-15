@@ -55,7 +55,7 @@ This entity is not used in the reduced database schema.
 | dossierId | yes | PRIMARY KEY |
 | locationUncorrectedAccuracy | yes |  |
 | locationUncorrectedOrigin | yes |  |
-| locationUncorrected<span style="color:red;">_{wgs84, lv95}**</span> | yes | <span style="color:red;">- WGS 84 (EPSG:4326) und LV95 (EPSG:2056) <br>- stored as a string (not of the 'geometry' data type)<br>- Schema WGS84: "<http://www.opengis.net/def/crs/EPSG/0/4326> POINT (47.55514 7.58963)"<br>- Schema LV95: "<http://www.opengis.net/def/crs/EPSG/0/2056> Point(2611362.373451764 1267128.0894856066)"**<br>- Source: https://docs.ogc.org/is/22-047r1/22-047r1.html#_877a702f-f4d3-464c-81e9-d8a1f37a13f5</span> |
+| locationUncorrected<span style="color:red;">_{wgs84, lv95}</span> | yes | <span style="color:red;">- WGS 84 (EPSG:4326) und LV95 (EPSG:2056) <br>- stored as a string (not of the 'geometry' data type)<br>- Schema WGS84: "<http://www.opengis.net/def/crs/EPSG/0/4326> POINT (47.55514 7.58963)"<br>- Schema LV95: "<http://www.opengis.net/def/crs/EPSG/0/2056> Point(2611362.373451764 1267128.0894856066)"**<br>- Source: https://docs.ogc.org/is/22-047r1/22-047r1.html#_877a702f-f4d3-464c-81e9-d8a1f37a13f5</span> |
 | location<span style="color:red;">_{wgs84, lv95}</span> | yes | <span style="color:red;">dito locationUncorrected</span> |
 | locationOrigin | yes |  |
 | specialType | yes |  |
