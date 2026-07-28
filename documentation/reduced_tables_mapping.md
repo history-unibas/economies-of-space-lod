@@ -33,7 +33,7 @@ No type -> use: CIDOC CRM E18 Physical Thing
 
 **Description of the table**
 
-Each element in this entity represents a physical dossier in the Historical Land Register of the City of Basel. Only dossiers that have at least one entry in the Project_Entry entity referring to the corresponding dossier are included in this entity. A dossier usually represents a building. Special dossiers contain a value in the 'specialType' attribute.
+Each element in this entity represents a physical dossier in the Historical Land Register of the City of Basel. Only dossiers that have at least one entry in the Project_Entry entity referring to the corresponding dossier are included in this entity. A dossier usually holds texts about a property including a house, garden, commercial building, etc. Special dossiers contain a value in the 'specialType' attribute.
 
 
 | **Column name** | **In Graph DB?** | **Remark** | **Description** |
@@ -46,7 +46,7 @@ Each element in this entity represents a physical dossier in the Historical Land
 | location<span style="color:red;">_wgs84</span> | yes | <span style="color:red;">dito locationUncorrected_wgs84</span> | This attribute contains the shifted geographical location of the dossier in the WGS 84 coordinate system (EPSG:4326).<br><br>Based on the attribute 'Project_Dossier.locationUncorrected_{wgs84,lv95}', the locations of selected dossiers have been adjusted with the aim of ensuring that fewer dossiers share the same location, thereby improving the display of the dossiers on a map.<br><br>Using an algorithm, a corresponding dossier was sought for any dossier in which the term 'neben' appears on the title page. If a 'neben dossier' was available, the location was shifted by a quarter of the distance in the direction of the 'neben dossier'. Example: 'St. Alban-Vorstadt Theil von 17 neben 15' (dossier: HGB_1_010_041, 'next to' dossier: 'St. Alban-Vorstadt 15', HGB_1_010_039). The distance of one quarter is chosen arbitrarily, but must be significantly less than half, as otherwise 'Teil von 15 neben 17' would end up at the same point. For dossiers whose titles comprise several addresses, corresponding dossiers were sought, each of which represents a single address. Where such dossiers were found, the geometric centre of gravity of the corresponding dossiers was defined as the shifted location of the linked dossier. Example: 'St. Alban-Graben 8, 10' (dossier: HGB_1_005_020; corresponding dossiers: 'St. Alban-Graben 8', HGB_1_005_019, and 'St. Alban-Graben 10', HGB_1_005_021). Selected files were then checked manually and repositioned based on the 1862 street plan. Manual checks were carried out on the locations of files that had been repositioned using the script, as well as on files where a repositioning was expected based on the information on the dossier's title page. In particular, a distinction was also made between front and back buildings where this was apparent. During the final manual review, many dossiers were identified that had not been located entirely correctly. Manual corrections were made primarily (but not exclusively) where the streets around 1862 differed significantly from the earlier street layout (examples: 'Eisengasse', 'untere Freie Strasse', 'Fischmarkt'). In these cases, the plan drawings held in the Historical Land Register of the City of Basel were consulted. The 'Project_Dossier.locationOrigin' attribute records which dossiers were repositioned using the algorithm and which were repositioned manually. Different locations situated less than one metre apart were harmonised.<br><br>Accuracy was not a specific objective when defining the locations. Although the dossiers were moved in a plausible direction and, in most cases, are now positioned more accurately than before (attribute 'Project_Dossier.locationUncorrected_{wgs84,lv95}'), this cannot be measured. The manual repositioning was carried out by eye rather than using precise measurements. |
 | location<span style="color:red;">_lv95</span> | yes | <span style="color:red;">dito locationUncorrected_lv95</span> | This attribute contains the shifted geographical location of the dossier in the LV95 coordinate system (EPSG:2056).<br><br> For further information, see the attribute 'Project_Dossier.location_wgs84'. |
 | locationOrigin | yes |  | This attribute records the shift in the adjusted location (attribute 'Project_Dossier.location') compared with the uncorrected location (attribute 'Project_Dossier.locationUncorrected'). |
-| specialType | yes | FB: falls nicht 'normale' Liegenschaft, unbestimmte Liegenschaften, Brunnen | This attribute is used to identify features that do not represent a building, such as a river. These dossiers were identified on the basis of the information provided on the cover page of each dossier. |
+| specialType | yes | FB: falls nicht 'normale' Liegenschaft, unbestimmte Liegenschaften, Brunnen | This attribute is used to identify dossiers with documents that do not refer to a single property with a building or garden, but instead either specific other facilities, such as fountains, natural features, such as rivers, or street-related information, such as "Strassenkörper". These dossiers were identified on the basis of the information provided on the cover page of each dossier. |
 | <span style="color:red;">StABS_Dossier.stabsId</span> | <span style="color:red;">yes</span> |  | An identifier for a dossier defined by the State Archives |
 | <span style="color:red;">StABS_Dossier.linkRecord</span> | <span style="color:red;">yes</span> |  | URI of the relevant entry in the Basel-Stadt Linked Data Portal |
 
@@ -58,7 +58,7 @@ Question about the 'year' column: date of the original document
 
 **Description of the table**
 
-Each element of this entity represents an entry recorded in the Historical Land Register of the City of Basel (HGB). Several entries may be documented on a single register tab ('page') of the HGB, or a single entry may span several pages. A page in the HGB is represented by an element in the 'Transkribus_Page' entity. If there are several entries on a single tab, these entries are not represented by multiple elements within this entity. The pages of the HGB considered are those that have been transcribed (see the 'Transkribus_Page' entity).
+Each element of this entity represents an entry recorded in the Historical Land Register of the City of Basel (HGB). An entry does not refer to a specific phyiscal object. An entry consists of a dated event with a source reference. A single entry may span several pages. A page in the HGB is represented by an element in the 'Transkribus_Page' entity. The pages of the HGB considered are those that have been transcribed (see the 'Transkribus_Page' entity).
 
 
 | **Column name** | **In Graph DB?** | **Remark** | **Description** |
@@ -132,13 +132,12 @@ This entity is not used in the reduced database schema.
 
 **Description of the table**
 
-Elements of this entity represent transcribed digital copies of a register page (front or back) from the Historical Land Register of the City of Basel. The following pages were excluded from the transcription:
+Elements of this entity represent transcribed digital copies of a register page (front or back) from the Historical Land Register of the City of Basel (Volume 1: Properties inside the City Walls). The following pages were excluded from the transcription:
 - Title pages, i.e. pages 1 and 2 of a dossier
 - 19th-century fire insurance registers ('Brandlagerbücher')
 - Index cards relating to the Reichspfennig ('Reichspfennigverzeichnisse') from 1497
 - Parcel information containing details of dossiers that were temporarily merged, or details of building history such as dates found
 - Pages belonging to dossiers identified as 'index of persons' or 'site plan'
-- All pages of a dossier where the dossier represents a property located outside the city walls
 
 
 | **Column name** | **In Graph DB?** | **Remark** | **Description** |
